@@ -131,7 +131,7 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="C:\workspace\soft\jeesite\target/MANIFEST.MF" />
+        <element id="file-copy" path="C:\workspace\soft\edu\target/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="jeesite/web/Web" />
     </root>
