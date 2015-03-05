@@ -22,11 +22,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="edu" />
         <module name="jeesite" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="jeesite" target="1.6" />
+    <bytecodeTargetLevel target="1.6">
+      <module name="edu" target="1.6" />
     </bytecodeTargetLevel>
   </component>
 </project>

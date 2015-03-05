@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="connection.url">jdbc:mysql://localhost:3306/jeesite</property>
+    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+      <mapping class="com.thinkgem.jeesite.modules.edu.entity.EduAbroadhome"/>
+      <mapping class="com.thinkgem.jeesite.modules.edu.entity.EduAbroadhomeInfo"/>
+      <mapping class="com.thinkgem.jeesite.modules.edu.entity.EduConvenience"/>
+      <mapping class="com.thinkgem.jeesite.modules.edu.entity.EduEmergency"/>
+      <mapping class="com.thinkgem.jeesite.modules.edu.entity.EduParent"/>
+      <mapping class="com.thinkgem.jeesite.modules.edu.entity.EduParentStudent"/>
+      <mapping class="com.thinkgem.jeesite.modules.edu.entity.EduStudent"/>
+      <!-- DB schema will be updated if needed -->
+    <!-- <property name="hbm2ddl.auto">update</property> -->
+  </session-factory>
+</hibernate-configuration>

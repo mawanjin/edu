@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="jeesite:war exploded">
+  <artifact type="exploded-war" name="edu:war exploded">
     <output-path>$PROJECT_DIR$/target/edu-1.1.0</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
@@ -131,7 +131,7 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="C:\workspace\soft\edu\target/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/target/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="edu/web/Web" />
     </root>
