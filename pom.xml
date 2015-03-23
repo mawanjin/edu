@@ -638,6 +638,12 @@
 			<version>${spring.version}</version>
 		</dependency>
 		<!-- TEST end -->
+
+		<dependency>
+			<groupId>org.imgscalr</groupId>
+			<artifactId>imgscalr-lib</artifactId>
+			<version>4.2</version>
+		</dependency>
 		
 		<!-- 自定义jar依赖包
 		<dependency>
@@ -802,6 +808,9 @@
 				    <version>3.2-FINAL</version>
 				</dependency>
 			</dependencies>
+
+
+
 			<build>
 				<plugins>
 					<plugin>

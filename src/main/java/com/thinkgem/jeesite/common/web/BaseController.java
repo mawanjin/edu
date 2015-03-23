@@ -6,6 +6,7 @@
 package com.thinkgem.jeesite.common.web;
 
 import java.beans.PropertyEditorSupport;
+import java.io.File;
 import java.util.Date;
 import java.util.List;
 
@@ -129,5 +130,7 @@ public abstract class BaseController {
 			}
 		});
 	}
-	
+
+
+
 }

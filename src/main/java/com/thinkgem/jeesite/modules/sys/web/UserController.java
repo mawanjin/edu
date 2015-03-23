@@ -59,6 +59,8 @@ public class UserController extends BaseController {
 			return new User();
 		}
 	}
+
+
 	
 	@RequiresPermissions("sys:user:view")
 	@RequestMapping({"list", ""})

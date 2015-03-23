@@ -24,7 +24,7 @@ public class EduParent extends IdEntity<EduParent> {
     private String passWord;
     private String portrait;
     private Date birth;
-    private String delFlag;
+
 
     @Basic
     @Column(name = "name")
@@ -84,16 +84,6 @@ public class EduParent extends IdEntity<EduParent> {
 
     public void setBirth(Date birth) {
         this.birth = birth;
-    }
-
-    @Basic
-    @Column(name = "del_flag")
-    public String getDelFlag() {
-        return delFlag;
-    }
-
-    public void setDelFlag(String delFlag) {
-        this.delFlag = delFlag;
     }
 
     @Override
