@@ -4,9 +4,6 @@ import com.thinkgem.jeesite.common.utils.FileUtils;
 import com.thinkgem.jeesite.common.web.BaseController;
 import org.activiti.engine.impl.util.json.JSONArray;
 import org.activiti.engine.impl.util.json.JSONObject;
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileUploadException;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.springframework.ui.Model;
 import org.imgscalr.Scalr;
@@ -35,8 +32,6 @@ public class FileUploadController extends BaseController{
     @RequiresPermissions("sys:fileupload:view")
     @RequestMapping({"list", ""})
     public String list(HttpServletRequest request, HttpServletResponse response, Model model) {
-
-
         return "modules/sys/fileupload";
     }
 
