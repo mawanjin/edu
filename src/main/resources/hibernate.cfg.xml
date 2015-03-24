@@ -6,14 +6,16 @@
   <session-factory>
     <property name="connection.url">jdbc:mysql://localhost:3306/jeesite</property>
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-      <mapping class="com.thinkgem.jeesite.modules.edu.entity.EduAbroadhome"/>
+    <mapping class="com.thinkgem.jeesite.modules.edu.entity.EduAbroadhome"/>
       <mapping class="com.thinkgem.jeesite.modules.edu.entity.EduAbroadhomeInfo"/>
       <mapping class="com.thinkgem.jeesite.modules.edu.entity.EduConvenience"/>
       <mapping class="com.thinkgem.jeesite.modules.edu.entity.EduEmergency"/>
       <mapping class="com.thinkgem.jeesite.modules.edu.entity.EduParent"/>
       <mapping class="com.thinkgem.jeesite.modules.edu.entity.EduParentStudent"/>
       <mapping class="com.thinkgem.jeesite.modules.edu.entity.EduStudent"/>
-      <!-- DB schema will be updated if needed -->
+    <mapping class="com.thinkgem.jeesite.modules.edu.entity.EduActivity"/>
+    <mapping class="com.thinkgem.jeesite.modules.edu.entity.SysUser"/>
+    <!-- DB schema will be updated if needed -->
     <!-- <property name="hbm2ddl.auto">update</property> -->
   </session-factory>
 </hibernate-configuration>

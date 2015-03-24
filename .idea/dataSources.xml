@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="2639492439">
+  <component name="DataSourceManagerImpl" format="xml" hash="3644112101">
     <data-source source="LOCAL" name="MySQL_EDU - jeesite@localhost" uuid="1a743566-b022-4a0d-bd9c-378c2687f652">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>

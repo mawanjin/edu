@@ -44,11 +44,11 @@ public class Generate {
 		// packageName 包名，这里如果更改包名，请在applicationContext.xml和srping-mvc.xml中配置base-package、packagesToScan属性，来指定多个（共4处需要修改）。
 		String packageName = "com.thinkgem.jeesite.modules";
 		
-		String moduleName = "factory";			// 模块名，例：sys
+		String moduleName = "edu";			// 模块名，例：sys
 		String subModuleName = "";				// 子模块名（可选） 
-		String className = "product";			// 类名，例：user
-		String classAuthor = "ThinkGem";		// 类作者，例：ThinkGem
-		String functionName = "产品";			// 功能名，例：用户
+		String className = "activity";			// 类名，例：user
+		String classAuthor = "lala";		// 类作者，例：ThinkGem
+		String functionName = "主题活动";			// 功能名，例：用户
 
 		// 是否启用生成工具
 		//Boolean isEnable = false;
