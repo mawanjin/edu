@@ -86,4 +86,20 @@ public class ActivityController extends BaseController {
 		return "redirect:"+Global.getAdminPath()+"/edu/activity/?repage";
 	}
 
+	@RequiresPermissions("edu:activity:edit")
+	@RequestMapping(value = "publish")
+	public String publish(String id,Byte status, RedirectAttributes redirectAttributes) {
+		Activity activity = activityService.get(id);
+		activity.setStatus(status);
+		activityService.save(activity);
+		if(status==1)
+			addMessage(redirectAttributes, "发布主题活动成功");
+		else
+			addMessage(redirectAttributes, "取消发布主题活动成功");
+
+		return "redirect:"+Global.getAdminPath()+"/edu/activity/?repage";
+	}
+
+
+
 }

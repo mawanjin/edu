@@ -36,12 +36,29 @@
 				<td><img src="${ctxImg}/${activity.img}" width="30px" height="30px"/> </td>
 				<td><a href="${ctx}/edu/activity/form?id=${activity.id}">${activity.title}</a></td>
 				<td>${activity.summary}</td>
-				<td>${activity.status}</td>
+				<td>
+					<c:choose>
+						<c:when test="${activity.status==1}">已发布</c:when>
+						<c:otherwise>
+							未发布
+						</c:otherwise>
+					</c:choose>
+				</td>
 
 				<td>${activity.remarks}</td>
 				<shiro:hasPermission name="edu:activity:edit"><td>
+					<c:choose>
+						<c:when test="${activity.status==0}">
+							<a href="${ctx}/edu/activity/publish?id=${activity.id}&status=1" onclick="return confirmx('确认要发布该主题活动吗？', this.href)">发布</a>
+						</c:when>
+						<c:otherwise>
+							<a href="${ctx}/edu/activity/publish?id=${activity.id}&status=0" onclick="return confirmx('确认要取消发布该主题活动吗？', this.href)">取消发布</a>
+						</c:otherwise>
+					</c:choose>
+
     				<a href="${ctx}/edu/activity/form?id=${activity.id}">修改</a>
 					<a href="${ctx}/edu/activity/delete?id=${activity.id}" onclick="return confirmx('确认要删除该主题活动吗？', this.href)">删除</a>
+
 				</td></shiro:hasPermission>
 			</tr>
 		</c:forEach>

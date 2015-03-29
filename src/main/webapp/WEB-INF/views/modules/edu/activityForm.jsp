@@ -115,22 +115,22 @@
 		</div>
 
 		<div class="control-group">
-			<label class="control-label" for="title">简介:</label>
+			<label class="control-label" for="summary">简介:</label>
 			<div class="controls">
 				<form:input path="summary" htmlEscape="false" maxlength="200" class="required"/>
 			</div>
 		</div>
 
 		<div class="control-group">
-			<label class="control-label" for="title">状态:</label>
+			<label class="control-label" for="status">状态:</label>
 			<div class="controls">
 				<form:radiobutton path="status" value="0" checked="checked"   />未发布
-				<form:radiobutton path="status" value="1" />发布
+				<form:radiobutton path="status" value="1" />已发布
 			</div>
 		</div>
 
 		<div class="control-group">
-			<label class="control-label" for="title">是否置顶:</label>
+			<label class="control-label" for="top">是否置顶:</label>
 			<div class="controls">
 				<form:radiobutton path="top" value="0" checked="checked"  />否
 				<form:radiobutton path="top" value="1" />是
