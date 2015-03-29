@@ -46,6 +46,14 @@ public class ActivityService extends BaseService {
 	public void save(Activity activity) {
 		activityDao.save(activity);
 	}
+
+	/**
+	 * 取消数据库中所有已置顶TOP的记录
+	 */
+	@Transactional(readOnly = false)
+	public void removeTop(Activity activity){
+		activityDao.update("update Activity set top='0' where top='1' and id!='"+activity.getId()+"'");
+	}
 	
 	@Transactional(readOnly = false)
 	public void delete(String id) {

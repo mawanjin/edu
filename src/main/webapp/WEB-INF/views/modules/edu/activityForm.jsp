@@ -124,8 +124,16 @@
 		<div class="control-group">
 			<label class="control-label" for="title">状态:</label>
 			<div class="controls">
-				<form:radiobutton path="status" value="0"   />未发布
+				<form:radiobutton path="status" value="0" checked="checked"   />未发布
 				<form:radiobutton path="status" value="1" />发布
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label" for="title">是否置顶:</label>
+			<div class="controls">
+				<form:radiobutton path="top" value="0" checked="checked"  />否
+				<form:radiobutton path="top" value="1" />是
 			</div>
 		</div>
 

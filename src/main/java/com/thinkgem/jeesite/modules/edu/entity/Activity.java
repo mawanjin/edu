@@ -22,6 +22,7 @@ public class Activity extends IdEntity<Activity> {
     private String summary;
     private String content;
     private Byte status;
+    private String top; // 删除标记（0：正常；1：删除；2：审核）
 
     @Basic
     @Column(name = "title")
@@ -73,6 +74,15 @@ public class Activity extends IdEntity<Activity> {
         this.status = status;
     }
 
+    @Basic
+    @Column(name = "top")
+    public String getTop() {
+        return top;
+    }
+
+    public void setTop(String top) {
+        this.top = top;
+    }
 
     @Override
     public boolean equals(Object o) {

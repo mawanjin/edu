@@ -70,6 +70,9 @@ public class ActivityController extends BaseController {
 		if (!beanValidator(model, activity)){
 			return form(activity, model);
 		}
+		if(activity.getTop().equals("1")){
+			activityService.removeTop(activity);
+		}
 		activityService.save(activity);
 		addMessage(redirectAttributes, "保存主题活动'" + activity.getTitle() + "'成功");
 		return "redirect:"+Global.getAdminPath()+"/edu/activity/?repage";
