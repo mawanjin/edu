@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL_EDU - jeesite@localhost" uuid="1a743566-b022-4a0d-bd9c-378c2687f652">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-pattern>jeesite.*</schema-pattern>
+      <default-schemas>jeesite.*</default-schemas>
+    </data-source>
+  </component>
+</project>
