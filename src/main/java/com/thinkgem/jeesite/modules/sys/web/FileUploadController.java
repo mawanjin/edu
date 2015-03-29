@@ -5,6 +5,8 @@ import com.thinkgem.jeesite.common.web.BaseController;
 import org.activiti.engine.impl.util.json.JSONArray;
 import org.activiti.engine.impl.util.json.JSONObject;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.hibernate.annotations.Source;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.ui.Model;
 import org.imgscalr.Scalr;
 import javax.imageio.ImageIO;
@@ -14,6 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.List;
+import java.util.UUID;
+
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.MultiValueMap;
@@ -28,6 +32,9 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 @Controller
 @RequestMapping(value = "${adminPath}/sys/fileupload")
 public class FileUploadController extends BaseController{
+
+    @Value("${adminPath}")
+    private String path;
 
     @RequiresPermissions("sys:fileupload:view")
     @RequestMapping({"list", ""})
@@ -141,18 +148,18 @@ public class FileUploadController extends BaseController{
 
             for(MultipartFile f : files){
                     FileUtils.createDirectory(request.getSession().getServletContext().getRealPath("/static/images/upload/"));
-                    File file = new File(request.getSession().getServletContext().getRealPath("/static/images/upload/"), f.getOriginalFilename());
+                    String fileName = UUID.randomUUID().toString().replaceAll("-","")+f.getOriginalFilename().substring(f.getOriginalFilename().lastIndexOf("."));
+                    File file = new File(request.getSession().getServletContext().getRealPath("/static/images/upload/"), fileName);//f.getOriginalFilename()
                     f.transferTo(file);
                     JSONObject jsono = new JSONObject();
-                    jsono.put("name", f.getOriginalFilename());
+                    jsono.put("name", fileName);
                     jsono.put("size", f.getSize());
-                    jsono.put("url", "fileupload/get?getfile=" + f.getOriginalFilename());
-                    jsono.put("thumbnail_url", "fileupload/get?getthumb=" + f.getOriginalFilename());
-                    jsono.put("delete_url", "fileupload/get?delfile=" +f.getOriginalFilename());
+                    jsono.put("url", request.getContextPath()+path+"/sys/fileupload/get?getfile=" + fileName);
+                    jsono.put("thumbnail_url", request.getContextPath()+path+"/sys/fileupload/get?getthumb=" + fileName);
+                    jsono.put("delete_url", request.getContextPath()+path+"/sys/fileupload/get?delfile=" +fileName);
                     jsono.put("delete_type", "GET");
                     json.put(jsono);
                     System.out.println(json.toString());
-                //                    item.write(file);
             }
 
         } catch (Exception e) {

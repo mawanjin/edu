@@ -8,6 +8,10 @@
 		$(document).ready(function() {
 			$("#name").focus();
 			$("#inputForm").validate();
+			$("#uploadBtn").on("click",function(){
+				$("#oUploadBtn").trigger("click");
+				$("#uploadTable").show();
+			});
 		});
 	</script>
 
@@ -22,31 +26,30 @@
 	</ul><br/>
 
 	<div class="container">
-
 		<!-- The file upload form used as target for the file upload widget -->
 		<form id="fileupload" action="${ctx}/sys/fileupload/upload" method="POST" enctype="multipart/form-data">
 			<!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
-			<div class="row fileupload-buttonbar">
+			<div class="row fileupload-buttonbar" style="height: 10px;" >
 				<div class="span7">
 					<!-- The fileinput-button span is used to style the file input field as button -->
-                        <span class="btn btn-success fileinput-button">
+                        <span  class="btn btn-success fileinput-button" style="display: none;">
                             <i class="icon-plus icon-white"></i>
-                            <span>Add files...</span>
-                            <input type="file" name="files[]" multiple>
+                            <span>上传图片</span>
+                            <input id="oUploadBtn" type="file" name="files[]" multiple>
                         </span>
-					<button type="submit" class="btn btn-primary start">
-						<i class="icon-upload icon-white"></i>
-						<span>Start upload</span>
-					</button>
-					<button type="reset" class="btn btn-warning cancel">
-						<i class="icon-ban-circle icon-white"></i>
-						<span>Cancel upload</span>
-					</button>
-					<button type="button" class="btn btn-danger delete">
-						<i class="icon-trash icon-white"></i>
-						<span>Delete</span>
-					</button>
-					<input type="checkbox" class="toggle">
+					<%--<button type="submit" class="btn btn-primary start">--%>
+						<%--<i class="icon-upload icon-white"></i>--%>
+						<%--<span>Start upload</span>--%>
+					<%--</button>--%>
+					<%--<button type="reset" class="btn btn-warning cancel">--%>
+						<%--<i class="icon-ban-circle icon-white"></i>--%>
+						<%--<span>Cancel upload</span>--%>
+					<%--</button>--%>
+					<%--<button type="button" class="btn btn-danger delete">--%>
+						<%--<i class="icon-trash icon-white"></i>--%>
+						<%--<span>Delete</span>--%>
+					<%--</button>--%>
+					<%--<input type="checkbox" class="toggle">--%>
 				</div>
 				<!-- The global progress inform¢ation -->
 				<div class="span5 fileupload-progress fade">
@@ -60,27 +63,50 @@
 			</div>
 			<!-- The loading indicator is shown during file processing -->
 			<div class="fileupload-loading"></div>
-			<br>
 			<!-- The table listing the files available for upload/download -->
-			<table role="presentation" class="table table-striped"><tbody class="files" data-toggle="modal-gallery" data-target="#modal-gallery"></tbody></table>
+			<table id="uploadTable" role="presentation" class=""><tbody class="files" data-toggle="modal-gallery" data-target="#modal-gallery" id="uploadTableBody"></tbody></table>
 		</form>
-		<br>
-		<div class="well">
-			<h3>Demo Notes</h3>
-			<ul>
-				<li>The maximum file size for uploads in this demo is <strong>5 MB</strong> (default file size is unlimited).</li>
-				<li>Only image files (<strong>JPG, GIF, PNG</strong>) are allowed in this demo (by default there is no file type restriction).</li>
-				<li>Uploaded files will be deleted automatically after <strong>5 minutes</strong> (demo setting).</li>
-				<li>You can <strong>drag &amp; drop</strong> files from your desktop on this webpage with Google Chrome, Mozilla Firefox and Apple Safari.</li>
-				<li>Please refer to the <a href="https://github.com/blueimp/jQuery-File-Upload">project website</a> and <a href="https://github.com/blueimp/jQuery-File-Upload/wiki">documentation</a> for more information.</li>
-				<li>Built with Twitter's <a href="http://twitter.github.com/bootstrap/">Bootstrap</a> toolkit and Icons from <a href="http://glyphicons.com/">Glyphicons</a>.</li>
-			</ul>
-		</div>
+
 	</div>
 
 	<form:form id="inputForm" modelAttribute="activity" action="${ctx}/edu/activity/save" method="post" class="form-horizontal">
 		<form:hidden path="id"/>
+		<form:hidden path="img" />
 		<tags:message content="${message}"/>
+		<div class="control-group">
+			<label class="control-label" for="title">缩略图:</label>
+			<div class="controls">
+
+				<span id="uploadBtn" class="btn btn-success"  <c:if test="${not empty activity.img}">style="display: none"</c:if>>
+                            <i class="icon-plus icon-white"></i>
+                            <span>上传图片</span>
+				</span>
+				<img id="portrait" <c:if test="${not empty activity.img}">src="${ctxImg}/${activity.img}"</c:if> />
+
+				<c:if test="${not empty activity.img}">
+					<button id="delPortraitBtn1"  class="btn btn-danger"  >
+						<i class="icon-trash icon-white"></i>
+						<span>删除</span>
+					</button>
+					<script>
+						$("#delPortraitBtn1").on("click",function(event){
+							$("#uploadBtn").show();
+							$("#delPortraitBtn1").hide();
+							$("#portrait").attr("src","");
+
+							event.preventDefault();
+						});
+					</script>
+				</c:if>
+
+
+				<button id="delPortraitBtn"  class="btn btn-danger" style="display: none;">
+					<i  class="icon-trash icon-white"></i>
+					<span>删除</span>
+				</button>
+			</div>
+		</div>
+
 		<div class="control-group">
 			<label class="control-label" for="title">标题:</label>
 			<div class="controls">
@@ -109,16 +135,23 @@
 				<form:textarea path="remarks" htmlEscape="false" rows="4" maxlength="200" class="input-xxlarge"/>
 			</div>
 		</div>
+
+		<div class="control-group">
+			<label class="control-label" for="content">详情:</label>
+			<div class="controls">
+				<form:textarea id="content" htmlEscape="false" path="content" rows="4" maxlength="200" class="input-xxlarge"/>
+				<tags:ckeditor replace="content" uploadPath="/edu/activity" />
+			</div>
+		</div>
+
 		<div class="form-actions">
 			<shiro:hasPermission name="edu:activity:edit">
 				<input id="btnSubmit" class="btn btn-primary" type="submit" value="保 存"/>&nbsp;
 			</shiro:hasPermission>
 			<input id="btnCancel" class="btn" type="button" value="返 回" onclick="history.go(-1)"/>
 		</div>
+
 	</form:form>
-
-
-
 
 	<!-- The template to display files available for upload -->
 	<script id="template-upload" type="text/x-tmpl">
@@ -161,22 +194,18 @@
             <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
             <td class="error" colspan="2"><span class="label label-important">Error</span> {%=file.error%}</td>
             {% } else { %}
-            <td class="preview">{% if (file.thumbnail_url) { %}
-                <a href="{%=file.url%}" title="{%=file.name%}" rel="gallery" download="{%=file.name%}"><img src="{%=file.thumbnail_url%}"></a>
+            <td class="preview" width=150px;>{% if (file.thumbnail_url) { %}
+                <a href="{%=file.url%}" title="{%=file.name%}" rel="gallery" download="{%=file.name%}"><img id="uploadImg" src="{%=file.thumbnail_url%}"></a>
                 {% } %}</td>
-            <td class="name">
-                <a href="{%=file.url%}" title="{%=file.name%}" rel="{%=file.thumbnail_url&&'gallery'%}" download="{%=file.name%}">{%=file.name%}</a>
-            </td>
-            <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
-            <td colspan="2"></td>
+
             {% } %}
-            <td class="delete">
-                <button class="btn btn-danger" data-type="{%=file.delete_type%}" data-url="{%=file.delete_url%}"{% if (file.delete_with_credentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
+            <td class="delete" width=150px;>
+                <button id="uploadDelBtn" class="btn btn-danger" data-type="{%=file.delete_type%}" data-url="{%=file.delete_url%}"{% if (file.delete_with_credentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
                         <i class="icon-trash icon-white"></i>
-                    <span>Delete</span>
+                    <span>删除</span>
                 </button>
-                <input type="checkbox" name="delete" value="1">
             </td>
+            <td>&nbsp;</td>
         </tr>
         {% } %}
     </script>

@@ -33,7 +33,7 @@
 		<tbody>
 		<c:forEach items="${page.list}" var="activity">
 			<tr>
-				<td><img src="${ctx}/static/images/upload/${activity.img}"/> </td>
+				<td><img src="${ctxImg}/${activity.img}" width="30px" height="30px"/> </td>
 				<td><a href="${ctx}/edu/activity/form?id=${activity.id}">${activity.title}</a></td>
 				<td>${activity.summary}</td>
 				<td>${activity.status}</td>

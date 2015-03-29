@@ -158,6 +158,14 @@
                                     function () {
                                         data.context = $(this);
                                         that._trigger('completed', e, data);
+                                        $("#portrait").attr("src",$("#uploadImg").attr("src"));
+                                        $("#delPortraitBtn").on("click",function(){
+                                            $("#uploadDelBtn").trigger("click");
+                                        });
+                                        $("#uploadTable").hide();
+                                        $("#uploadBtn").hide();
+                                        $("#delPortraitBtn").show();
+                                        $("#img").val(file.name);
                                     }
                                 );
                             }
@@ -304,6 +312,12 @@
                         that._trigger('destroyed', e, data);
                     }
                 );
+                $("#uploadBtn").show();
+                $("#delPortraitBtn").hide();
+                $("#portrait").attr("src","");
+                $("#uploadTableBody").html("");
+
+
             }
         },
 
