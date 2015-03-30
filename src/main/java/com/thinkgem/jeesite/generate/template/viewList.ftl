@@ -29,13 +29,29 @@
 	</form:form>
 	<tags:message content="${r"${message}"}"/>
 	<table id="contentTable" class="table table-striped table-bordered table-condensed">
-		<thead><tr><th>名称</th><th>备注</th><shiro:hasPermission name="${permissionPrefix}:edit"><th>操作</th></shiro:hasPermission></tr></thead>
+		<thead><tr><th>名称</th><th>状态</th><th>备注</th><shiro:hasPermission name="${permissionPrefix}:edit"><th>操作</th></shiro:hasPermission></tr></thead>
 		<tbody>
 		<c:forEach items="${r"${page.list}"}" var="${className}">
 			<tr>
 				<td><a href="${r"${ctx}"}/${urlPrefix}/form?id=${"${"+className+".id}"}">${"${"+className+".name}"}</a></td>
+                <td>
+                    <c:choose>
+                        <c:when test="${"${"+className+".status==1}"}">已发布</c:when>
+                        <c:otherwise>
+                            未发布
+                        </c:otherwise>
+                    </c:choose>
+                </td>
 				<td>${"${"+className+".remarks}"}</td>
 				<shiro:hasPermission name="${permissionPrefix}:edit"><td>
+                    <c:choose>
+                        <c:when test="${"${"+className+".status==0}"}" >
+                            <a href="${r"${ctx}"}/${urlPrefix}/publish?id=${"${"+className+".id}"}&status=1" onclick="return confirmx('确认要发布该${functionName}吗？', this.href)">发布</a>
+                        </c:when>
+                        <c:otherwise>
+                            <a href="${r"${ctx}"}/${urlPrefix}/publish?id=${"${"+className+".id}"}&status=0" onclick="return confirmx('确认要取消发布该${functionName}吗？', this.href)">取消发布</a>
+                        </c:otherwise>
+                    </c:choose>
     				<a href="${r"${ctx}"}/${urlPrefix}/form?id=${"${"+className+".id}"}">修改</a>
 					<a href="${r"${ctx}"}/${urlPrefix}/delete?id=${"${"+className+".id}"}" onclick="return confirmx('确认要删除该${functionName}吗？', this.href)">删除</a>
 				</td></shiro:hasPermission>

@@ -104,6 +104,7 @@
     <function-signature>java.lang.String getDictValue(java.lang.String, java.lang.String, java.lang.String)</function-signature>
     <example>${fns:getDictValue(label, type, defaultValue)}</example>  
   </function>
+
   
   <function>
     <description>获取字典对象列表</description>
@@ -112,7 +113,7 @@
     <function-signature>java.util.List getDictList(java.lang.String)</function-signature>
     <example>${fns:getDictList(type)}</example>  
   </function>
-  
+
   <!-- Encodes -->
   <function>
     <description>URL编码</description>

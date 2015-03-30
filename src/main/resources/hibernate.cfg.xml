@@ -15,6 +15,8 @@
       <mapping class="com.thinkgem.jeesite.modules.edu.entity.EduStudent"/>
     <mapping class="com.thinkgem.jeesite.modules.edu.entity.EduActivity"/>
     <mapping class="com.thinkgem.jeesite.modules.edu.entity.SysUser"/>
+    <mapping class="com.thinkgem.jeesite.modules.edu.entity.user.EduUser"/>
+    <mapping class="com.thinkgem.jeesite.modules.edu.entity.user.EduUserRelation"/>
     <!-- DB schema will be updated if needed -->
     <!-- <property name="hbm2ddl.auto">update</property> -->
   </session-factory>

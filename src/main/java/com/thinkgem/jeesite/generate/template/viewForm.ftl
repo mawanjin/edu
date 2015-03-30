@@ -26,6 +26,15 @@
 				<form:input path="name" htmlEscape="false" maxlength="200" class="required"/>
 			</div>
 		</div>
+
+        <div class="control-group">
+            <label class="control-label" for="status">状态:</label>
+            <div class="controls">
+                <form:radiobutton path="status" value="0" checked="checked"   />未发布
+                <form:radiobutton path="status" value="1" />已发布
+            </div>
+        </div>
+
 		<div class="control-group">
 			<label class="control-label" for="remarks">备注:</label>
 			<div class="controls">

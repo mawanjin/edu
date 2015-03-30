@@ -83,4 +83,18 @@ public class ${ClassName}Controller extends BaseController {
 		return "redirect:"+Global.getAdminPath()+"/${viewPrefix}/?repage";
 	}
 
+	@RequiresPermissions("${permissionPrefix}:edit")
+	@RequestMapping(value = "publish")
+	public String publish(String id,Byte status, RedirectAttributes redirectAttributes) {
+		${ClassName} ${className} = ${className}Service.get(id);
+		${className}.setStatus(status);
+		${className}Service.save(${className});
+		if(status==1)
+		addMessage(redirectAttributes, "发布${functionName}成功");
+		else
+		addMessage(redirectAttributes, "取消发布${functionName}成功");
+
+		return "redirect:"+Global.getAdminPath()+"/${viewPrefix}/?repage";
+	}
+
 }

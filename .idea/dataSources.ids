@@ -568,33 +568,59 @@
       <column name="content" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1" remarks="6K+m5oOF"/>
       <column name="status" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" remarks="MOacquWPkeW4gyAgMeWPkeW4gw=="/>
       <column name="del_flag" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="5Yig6Zmk5qCH6K6w"/>
-      <column name="remarks" sqlType="VARCHAR" precision="80" scale="0" nullable="true" jdbcType="12" remarks="5aSH5rOo"/>
-      <column name="createBy" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12" remarks="5Yib5bu66ICFKOWFs+iBlOWIsOeUqOaIt+ihqCk="/>
-      <column name="createDate" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
-      <column name="updateBy" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
-      <column name="createDateStart" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
-      <column name="createDateEnd" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
-      <column name="updateDateStart" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
-      <column name="updateDateEnd" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="remarks" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5aSH5rOo"/>
+      <column name="create_by" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12" remarks="5Yib5bu66ICFKOWFs+iBlOWIsOeUqOaIt+ihqCk="/>
+      <column name="create_date" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="update_by" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
+      <column name="update_date" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="top" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" def="JzAn" remarks="5piv5ZCm5Li65pyA5LiK6Z2i55qE"/>
       <primary-key name="PRIMARY" columns="id"/>
-      <foreign-key name="fk_user_activity" columns="createBy" ref-table="sys_user" ref-schema="" ref-catalog="jeesite" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
-      <foreign-key name="fk_user_activity_upateby" columns="updateBy" ref-table="sys_user" ref-schema="" ref-catalog="jeesite" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
-      <index name="fk_user_activity_idx" unique="false" columns="createBy,updateBy"/>
-      <index name="fk_user_activity_upateby" unique="false" columns="updateBy"/>
+      <foreign-key name="fk_user_activity" columns="create_by" ref-table="sys_user" ref-schema="" ref-catalog="jeesite" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="fk_user_activity_upateby" columns="update_by" ref-table="sys_user" ref-schema="" ref-catalog="jeesite" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <index name="fk_user_activity_idx" unique="false" columns="create_by,update_by"/>
+      <index name="fk_user_activity_upateby" unique="false" columns="update_by"/>
     </table>
     <table name="edu_convenience" schema="" catalog="jeesite" type="TABLE">
       <column name="id" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
-      <column name="pic" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12" remarks="57yp55Wl5Zu+"/>
-      <column name="title" sqlType="VARCHAR" precision="80" scale="0" nullable="true" jdbcType="12"/>
-      <column name="detail" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
-      <column name="create_time" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93" remarks="5Yib5bu65pel5pyf"/>
+      <column name="title" sqlType="VARCHAR" precision="225" scale="0" nullable="true" jdbcType="12"/>
+      <column name="img" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="summary" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="content" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1" remarks="6K+m5oOF"/>
+      <column name="status" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" remarks="MOacquWPkeW4gyAgMeWPkeW4gw=="/>
+      <column name="del_flag" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="5Yig6Zmk5qCH6K6w"/>
+      <column name="remarks" sqlType="VARCHAR" precision="80" scale="0" nullable="true" jdbcType="12" remarks="5aSH5rOo"/>
+      <column name="create_by" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12" remarks="5Yib5bu66ICFKOWFs+iBlOWIsOeUqOaIt+ihqCk="/>
+      <column name="create_date" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="update_by" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
+      <column name="update_date" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
       <primary-key name="PRIMARY" columns="id"/>
     </table>
     <table name="edu_emergency" schema="" catalog="jeesite" type="TABLE">
       <column name="id" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
-      <column name="title" sqlType="VARCHAR" precision="80" scale="0" nullable="true" jdbcType="12" remarks="5qCH6aKY"/>
-      <column name="detail" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1" remarks="5YaF5a65"/>
-      <column name="create_time" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="title" sqlType="VARCHAR" precision="225" scale="0" nullable="true" jdbcType="12" remarks="IOagh+mimA=="/>
+      <column name="content" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1" remarks="6K+m5oOF"/>
+      <column name="status" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" remarks="MOacquWPkeW4gyAgMeWPkeW4gw=="/>
+      <column name="del_flag" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="5Yig6Zmk5qCH6K6w"/>
+      <column name="remarks" sqlType="VARCHAR" precision="80" scale="0" nullable="true" jdbcType="12" remarks="5aSH5rOo"/>
+      <column name="create_by" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12" remarks="5Yib5bu66ICFKOWFs+iBlOWIsOeUqOaIt+ihqCk="/>
+      <column name="create_date" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="update_by" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
+      <column name="update_date" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="type" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" remarks="57G75Z6LOjDph43opoEgMeezu+e7nw=="/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="edu_indeximg" schema="" catalog="jeesite" type="TABLE">
+      <column name="id" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
+      <column name="img" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="porder" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" remarks="6aG65bqPIOaVsOWtl+i2iuWkp+aOkui2iumrmA=="/>
+      <column name="del_flag" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="5Yig6Zmk5qCH6K6w"/>
+      <column name="remarks" sqlType="VARCHAR" precision="80" scale="0" nullable="true" jdbcType="12" remarks="5aSH5rOo"/>
+      <column name="create_by" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12" remarks="5Yib5bu66ICFKOWFs+iBlOWIsOeUqOaIt+ihqCk="/>
+      <column name="update_by" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
+      <column name="create_date" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="update_date" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="status" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="name" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="id"/>
     </table>
     <table name="edu_parent" schema="" catalog="jeesite" type="TABLE">
@@ -631,6 +657,32 @@
       <column name="del_flag" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" def="JzAn" remarks="5Yig6Zmk5qCH6K6w"/>
       <primary-key name="PRIMARY" columns="id"/>
       <exported-key name="fk_student" table="edu_parent_student" schema="" catalog="jeesite" columns="student_id"/>
+    </table>
+    <table name="edu_user" schema="" catalog="jeesite" type="TABLE">
+      <column name="id" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12" remarks="IOagh+mimA=="/>
+      <column name="login_name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12" remarks="55m75b2V5ZCN"/>
+      <column name="nick_name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12" remarks="5pi156ew"/>
+      <column name="del_flag" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="5Yig6Zmk5qCH6K6w"/>
+      <column name="remarks" sqlType="VARCHAR" precision="80" scale="0" nullable="true" jdbcType="12" remarks="5aSH5rOo"/>
+      <column name="create_by" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12" remarks="5Yib5bu66ICFKOWFs+iBlOWIsOeUqOaIt+ihqCk="/>
+      <column name="create_date" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="update_by" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
+      <column name="update_date" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="type" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" remarks="MDrlrrbplb8gMeWtpueUnyAzOueuoeeQhuWRmA=="/>
+      <column name="password" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12" remarks="5a+G56CB"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="edu_user_parent" table="edu_user_relation" schema="" catalog="jeesite" columns="parent_id"/>
+      <exported-key name="edu_user_studnet" table="edu_user_relation" schema="" catalog="jeesite" columns="id"/>
+    </table>
+    <table name="edu_user_relation" schema="" catalog="jeesite" type="TABLE">
+      <column name="id" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
+      <column name="parent_id" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12" remarks="IOagh+mimA=="/>
+      <column name="student_id" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12" remarks="55m75b2V5ZCN"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="edu_user_parent" columns="parent_id" ref-table="edu_user" ref-schema="" ref-catalog="jeesite" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="edu_user_studnet" columns="id" ref-table="edu_user" ref-schema="" ref-catalog="jeesite" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <index name="edu_user_parent" unique="false" columns="parent_id"/>
     </table>
     <table name="oa_leave" schema="" catalog="jeesite" type="TABLE">
       <column name="id" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12" remarks="57yW5Y+3"/>
@@ -830,8 +882,8 @@
       <column name="remarks" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5aSH5rOo5L+h5oGv"/>
       <column name="del_flag" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1" def="JzAn" remarks="5Yig6Zmk5qCH6K6w"/>
       <primary-key name="PRIMARY" columns="id"/>
-      <exported-key name="fk_user_activity" table="edu_activity" schema="" catalog="jeesite" columns="createBy"/>
-      <exported-key name="fk_user_activity_upateby" table="edu_activity" schema="" catalog="jeesite" columns="updateBy"/>
+      <exported-key name="fk_user_activity" table="edu_activity" schema="" catalog="jeesite" columns="create_by"/>
+      <exported-key name="fk_user_activity_upateby" table="edu_activity" schema="" catalog="jeesite" columns="update_by"/>
       <index name="sys_user_company_id" unique="false" columns="company_id"/>
       <index name="sys_user_del_flag" unique="false" columns="del_flag"/>
       <index name="sys_user_login_name" unique="false" columns="login_name"/>

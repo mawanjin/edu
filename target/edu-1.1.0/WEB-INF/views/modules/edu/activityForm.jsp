@@ -23,7 +23,7 @@
 	<ul class="nav nav-tabs">
 		<li><a href="${ctx}/edu/activity/">主题活动列表</a></li>
 		<li class="active"><a href="${ctx}/edu/activity/form?id=${activity.id}">主题活动<shiro:hasPermission name="edu:activity:edit">${not empty activity.id?'修改':'添加'}</shiro:hasPermission><shiro:lacksPermission name="edu:activity:edit">查看</shiro:lacksPermission></a></li>
-	</ul><br/>
+	</ul>
 
 	<div class="container">
 		<!-- The file upload form used as target for the file upload widget -->
