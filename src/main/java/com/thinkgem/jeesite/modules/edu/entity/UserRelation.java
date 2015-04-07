@@ -1,5 +1,7 @@
 package com.thinkgem.jeesite.modules.edu.entity;
 
+import com.thinkgem.jeesite.common.persistence.IdEntity;
+
 import javax.persistence.*;
 
 /**
@@ -7,21 +9,12 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "edu_user_relation", schema = "", catalog = "jeesite")
-public class UserRelation {
-    private String id;
+public class UserRelation extends IdEntity<UserRelation> {
 //    private String studentId;
     private Euser eduUserByParentId;
     private Euser eduUserById;
 
-    @Id
-    @Column(name = "id", nullable = false, insertable = true, updatable = true, length = 40)
-    public String getId() {
-        return id;
-    }
 
-    public void setId(String id) {
-        this.id = id;
-    }
 
 //    @Basic
 //    @Column(name = "student_id", nullable = true, insertable = true, updatable = true, length = 40)
@@ -45,7 +38,7 @@ public class UserRelation {
     }
 
     @OneToOne
-    @JoinColumn(name = "id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "student_id", referencedColumnName = "id", nullable = false)
     public Euser getEduUserById() {
         return eduUserById;
     }
