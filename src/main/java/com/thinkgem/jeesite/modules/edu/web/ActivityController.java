@@ -6,6 +6,7 @@ package com.thinkgem.jeesite.modules.edu.web;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -73,6 +74,9 @@ public class ActivityController extends BaseController {
 		if(activity.getTop().equals("1")){
 			activityService.removeTop(activity);
 		}
+
+		activity.setContent(StringEscapeUtils.unescapeHtml4(activity.getContent()));
+
 		activityService.save(activity);
 		addMessage(redirectAttributes, "保存主题活动'" + activity.getTitle() + "'成功");
 		return "redirect:"+Global.getAdminPath()+"/edu/activity/?repage";

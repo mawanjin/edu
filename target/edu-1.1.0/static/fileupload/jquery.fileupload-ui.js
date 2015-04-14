@@ -158,14 +158,41 @@
                                     function () {
                                         data.context = $(this);
                                         that._trigger('completed', e, data);
-                                        $("#portrait").attr("src",$("#uploadImg").attr("src"));
+
                                         $("#delPortraitBtn").on("click",function(){
+                                            if(isBadge !='undefined'&&isBadge==true){
+                                                isBadge = false;
+                                            }
                                             $("#uploadDelBtn").trigger("click");
+                                            $("#portrait").hide();
+                                            $("#img").val("");
                                         });
+
+                                        $("#delBadgeBtn").on("click",function(){
+                                            isBadge = true;
+                                            $("#uploadDelBtn").trigger("click");
+                                            $("#badgeImg").hide();
+                                            $("#badge").val("");
+                                            $("#delBadgeBtn").hide();
+                                            $("#uploadBtn1").show();
+                                        });
+
                                         $("#uploadTable").hide();
-                                        $("#uploadBtn").hide();
-                                        $("#delPortraitBtn").show();
-                                        $("#img").val(file.name);
+
+                                        if(typeof isBadge == 'undefined' || isBadge == null ){
+                                            $("#uploadBtn").hide();
+                                            $("#delPortraitBtn").show();
+                                            $("#portrait").show();
+                                            $("#portrait").attr("src",$("#uploadImg").attr("src"));
+                                            $("#img").val(file.name);
+                                        }else if(isBadge==true){
+                                            $("#uploadBtn1").hide();
+                                            $("#delBadgeBtn").show();
+                                            $("#badgeImg").show();
+
+                                            $("#badgeImg").attr("src",$("#uploadImg").attr("src"));
+                                            $("#badge").val(file.name);
+                                        }
                                     }
                                 );
                             }
@@ -312,12 +339,18 @@
                         that._trigger('destroyed', e, data);
                     }
                 );
-                $("#uploadBtn").show();
-                $("#delPortraitBtn").hide();
-                $("#portrait").attr("src","");
+
+                if(typeof isBadge == 'undefined' || isBadge == null ){
+                    $("#uploadBtn").show();
+                    $("#delPortraitBtn").hide();
+                    $("#portrait").attr("src","");
+                }else if(isBadge==true){
+                    $("#uploadBtn1").show();
+                    $("#delBadgeBtn").hide();
+                    $("#badgeImg").attr("src","");
+                }
+
                 $("#uploadTableBody").html("");
-
-
             }
         },
 
