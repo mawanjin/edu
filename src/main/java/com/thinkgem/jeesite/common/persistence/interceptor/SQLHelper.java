@@ -96,7 +96,7 @@ public class SQLHelper {
      * @param parameterObject 参数
      * @param boundSql        boundSql
      * @return 总记录数
-     * @throws SQLException sql查询错误
+     * @throws java.sql.SQLException sql查询错误
      */
     public static int getCount(final String sql, final Connection connection,
     							final MappedStatement mappedStatement, final Object parameterObject,

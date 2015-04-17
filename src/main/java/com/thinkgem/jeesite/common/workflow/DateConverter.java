@@ -41,7 +41,7 @@ public class DateConverter implements Converter {
 	 *
 	 * @param value
 	 * @return
-	 * @throws ParseException 
+	 * @throws java.text.ParseException
 	 */
 	private Date doConvertToDate(Object value) throws ParseException {
 		Date result = null;

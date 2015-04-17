@@ -115,7 +115,7 @@ public class JsonMapper extends ObjectMapper {
 	 * 如果JSON字符串为"[]", 返回空集合.
 	 * 
 	 * 如需反序列化复杂Collection如List<MyBean>, 请使用fromJson(String,JavaType)
-	 * @see #fromJson(String, JavaType)
+	 * @see #fromJson(String, com.fasterxml.jackson.databind.JavaType)
 	 */
 	public <T> T fromJson(String jsonString, Class<T> clazz) {
 		if (StringUtils.isEmpty(jsonString)) {

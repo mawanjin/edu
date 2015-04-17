@@ -103,6 +103,15 @@
     <orderEntry type="library" name="Maven: org.mybatis:mybatis-spring:1.2.1" level="project" />
     <orderEntry type="library" name="Maven: org.wltea:analyzer:2012_u6" level="project" />
     <orderEntry type="library" name="Maven: com.alibaba:druid:1.0.1" level="project" />
+    <orderEntry type="module-library">
+      <library name="Maven: com.alibaba:jconsole:1.6.0">
+        <CLASSES>
+          <root url="jar:///System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/jconsole.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
     <orderEntry type="library" scope="RUNTIME" name="Maven: mysql:mysql-connector-java:5.1.13" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.oracle:ojdbc14:10.2.0.1.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: net.sourceforge.jtds:jtds:1.2.4" level="project" />

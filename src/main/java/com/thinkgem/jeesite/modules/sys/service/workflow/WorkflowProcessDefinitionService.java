@@ -37,7 +37,7 @@ public class WorkflowProcessDefinitionService extends BaseService {
 	protected HistoryService historyService;
 
 	/**
-	 * 根据流程实例ID查询流程定义对象{@link ProcessDefinition}
+	 * 根据流程实例ID查询流程定义对象{@link org.activiti.engine.repository.ProcessDefinition}
 	 * @param processInstanceId	流程实例ID
 	 * @return	流程定义对象{@link ProcessDefinition}
 	 */
@@ -50,7 +50,7 @@ public class WorkflowProcessDefinitionService extends BaseService {
 	}
 
 	/**
-	 * 根据流程定义ID查询流程定义对象{@link ProcessDefinition}
+	 * 根据流程定义ID查询流程定义对象{@link org.activiti.engine.repository.ProcessDefinition}
 	 * @param processDefinitionId	流程定义对象ID
 	 * @return	流程定义对象{@link ProcessDefinition}
 	 */
@@ -102,10 +102,10 @@ public class WorkflowProcessDefinitionService extends BaseService {
 
 	/**
 	 * 部署单个流程定义
-	 * @param resourceLoader	{@link ResourceLoader}
+	 * @param resourceLoader	{@link org.springframework.core.io.ResourceLoader}
 	 * @param processKey		模块名称
 	 * @param subModule			流程定义名称
-	 * @throws IOException		找不到zip文件时
+	 * @throws java.io.IOException		找不到zip文件时
 	 */
 	private void deploySingleProcess(ResourceLoader resourceLoader, String processKey) throws IOException {
 		String classpathResourceUrl = "classpath:/deployments/" + processKey + ".bar";

@@ -152,7 +152,7 @@ public class DateUtils extends org.apache.commons.lang.time.DateUtils {
 	
 	/**
 	 * @param args
-	 * @throws ParseException
+	 * @throws java.text.ParseException
 	 */
 	public static void main(String[] args) throws ParseException {
 //		System.out.println(formatDate(parseDate("2010/3/6")));

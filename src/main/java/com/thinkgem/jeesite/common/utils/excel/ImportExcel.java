@@ -62,8 +62,8 @@ public class ImportExcel {
 	 * 构造函数
 	 * @param path 导入文件，读取第一个工作表
 	 * @param headerNum 标题行号，数据行号=标题行号+1
-	 * @throws InvalidFormatException 
-	 * @throws IOException 
+	 * @throws org.apache.poi.openxml4j.exceptions.InvalidFormatException
+	 * @throws java.io.IOException
 	 */
 	public ImportExcel(String fileName, int headerNum) 
 			throws InvalidFormatException, IOException {
@@ -74,8 +74,8 @@ public class ImportExcel {
 	 * 构造函数
 	 * @param path 导入文件对象，读取第一个工作表
 	 * @param headerNum 标题行号，数据行号=标题行号+1
-	 * @throws InvalidFormatException 
-	 * @throws IOException 
+	 * @throws org.apache.poi.openxml4j.exceptions.InvalidFormatException
+	 * @throws java.io.IOException
 	 */
 	public ImportExcel(File file, int headerNum) 
 			throws InvalidFormatException, IOException {
@@ -87,8 +87,8 @@ public class ImportExcel {
 	 * @param path 导入文件
 	 * @param headerNum 标题行号，数据行号=标题行号+1
 	 * @param sheetIndex 工作表编号
-	 * @throws InvalidFormatException 
-	 * @throws IOException 
+	 * @throws org.apache.poi.openxml4j.exceptions.InvalidFormatException
+	 * @throws java.io.IOException
 	 */
 	public ImportExcel(String fileName, int headerNum, int sheetIndex) 
 			throws InvalidFormatException, IOException {
@@ -100,8 +100,8 @@ public class ImportExcel {
 	 * @param path 导入文件对象
 	 * @param headerNum 标题行号，数据行号=标题行号+1
 	 * @param sheetIndex 工作表编号
-	 * @throws InvalidFormatException 
-	 * @throws IOException 
+	 * @throws org.apache.poi.openxml4j.exceptions.InvalidFormatException
+	 * @throws java.io.IOException
 	 */
 	public ImportExcel(File file, int headerNum, int sheetIndex) 
 			throws InvalidFormatException, IOException {
@@ -113,8 +113,8 @@ public class ImportExcel {
 	 * @param file 导入文件对象
 	 * @param headerNum 标题行号，数据行号=标题行号+1
 	 * @param sheetIndex 工作表编号
-	 * @throws InvalidFormatException 
-	 * @throws IOException 
+	 * @throws org.apache.poi.openxml4j.exceptions.InvalidFormatException
+	 * @throws java.io.IOException
 	 */
 	public ImportExcel(MultipartFile multipartFile, int headerNum, int sheetIndex) 
 			throws InvalidFormatException, IOException {
@@ -126,8 +126,8 @@ public class ImportExcel {
 	 * @param path 导入文件对象
 	 * @param headerNum 标题行号，数据行号=标题行号+1
 	 * @param sheetIndex 工作表编号
-	 * @throws InvalidFormatException 
-	 * @throws IOException 
+	 * @throws org.apache.poi.openxml4j.exceptions.InvalidFormatException
+	 * @throws java.io.IOException
 	 */
 	public ImportExcel(String fileName, InputStream is, int headerNum, int sheetIndex) 
 			throws InvalidFormatException, IOException {

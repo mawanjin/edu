@@ -65,7 +65,7 @@ public class IdGen implements IdGenerator, SessionIdGenerator {
 	public static void main(String[] args) {
 		System.out.println(IdGen.uuid());
 		System.out.println(IdGen.uuid().length());
-		System.out.println(new com.thinkgem.jeesite.common.utils.IdGen().getNextId());
+		System.out.println(new IdGen().getNextId());
 	}
 
 }
