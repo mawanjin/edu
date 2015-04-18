@@ -29,10 +29,11 @@
 	</form:form>
 	<tags:message content="${message}"/>
 	<table id="contentTable" class="table table-striped table-bordered table-condensed">
-		<thead><tr><th>名称</th><th>类型</th><th>状态</th><th>备注</th><shiro:hasPermission name="edu:emergency:edit"><th>操作</th></shiro:hasPermission></tr></thead>
+		<thead><tr><th>缩略图</th><th>名称</th><th>类型</th><th>置顶</th><th>状态</th><th>备注</th><shiro:hasPermission name="edu:emergency:edit"><th>操作</th></shiro:hasPermission></tr></thead>
 		<tbody>
 		<c:forEach items="${page.list}" var="emergency">
 			<tr>
+				<td><img src="${ctxImg}/${emergency.img}" width="30px" height="30px"/> </td>
 				<td><a href="${ctx}/edu/emergency/form?id=${emergency.id}">${emergency.title}</a></td>
                 <td>
                     <c:choose>
@@ -42,6 +43,15 @@
                         </c:otherwise>
                     </c:choose>
                 </td>
+				<td>
+                    <c:choose>
+                        <c:when test="${emergency.top==1}">已置顶</c:when>
+                        <c:otherwise>
+                            普通
+                        </c:otherwise>
+                    </c:choose>
+                </td>
+
 				<td>
                     <c:choose>
                         <c:when test="${emergency.status==1}">已发布</c:when>

@@ -8,6 +8,7 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.thinkgem.jeesite.common.persistence.Page;
@@ -15,6 +16,8 @@ import com.thinkgem.jeesite.common.service.BaseService;
 import com.thinkgem.jeesite.common.utils.StringUtils;
 import com.thinkgem.jeesite.modules.edu.entity.Activity;
 import com.thinkgem.jeesite.modules.edu.dao.ActivityDao;
+
+import java.util.List;
 
 /**
  * 主题活动Service
@@ -59,5 +62,8 @@ public class ActivityService extends BaseService {
 	public void delete(String id) {
 		activityDao.deleteById(id);
 	}
-	
+
+	public List<Activity> findAll(){
+		return activityDao.find("from Activity where status=1 and del_flag=0 order by top desc");
+	}
 }

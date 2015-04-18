@@ -72,6 +72,9 @@ public class EmergencyController extends BaseController {
 			return form(emergency, model);
 		}
 		emergency.setContent(StringEscapeUtils.unescapeHtml4(emergency.getContent()));
+		if(emergency.getTop().byteValue()== 1 ){
+			emergencyService.clearTop(emergency);
+		}
 		emergencyService.save(emergency);
 		addMessage(redirectAttributes, "保存重要提示'" + emergency.getTitle() + "'成功");
 		return "redirect:"+Global.getAdminPath()+"/edu/emergency/?repage";

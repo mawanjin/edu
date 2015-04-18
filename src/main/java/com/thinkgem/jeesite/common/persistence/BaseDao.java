@@ -166,6 +166,7 @@ public class BaseDao<T> {
 	 * @return
 	 */
 	public <E> List<E> find(String qlString){
+
 		return find(qlString, null);
 	}
     

@@ -16,6 +16,8 @@ import com.thinkgem.jeesite.common.utils.StringUtils;
 import com.thinkgem.jeesite.modules.edu.entity.Convenience;
 import com.thinkgem.jeesite.modules.edu.dao.ConvenienceDao;
 
+import java.util.List;
+
 /**
  * 生活便利Service
  * @author lala
@@ -51,5 +53,8 @@ public class ConvenienceService extends BaseService {
 	public void delete(String id) {
 		convenienceDao.deleteById(id);
 	}
-	
+
+	public List<Convenience> findAll() {
+		return convenienceDao.find("from Convenience where status=1 and del_flag=0 order by createDate desc");
+	}
 }

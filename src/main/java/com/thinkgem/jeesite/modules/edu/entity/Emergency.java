@@ -20,9 +20,13 @@ import javax.persistence.Table;
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Emergency extends IdEntity<Emergency> {
     private String title;
+    private String img;
     private String content;
     private Byte status;
     private Byte type; // 0:重要 1:系统
+    private Byte top; //是否是置顶的第一张，显示为图片
+
+
 
     @Basic
     @Column(name = "title")
@@ -34,6 +38,15 @@ public class Emergency extends IdEntity<Emergency> {
         this.title = title;
     }
 
+    @Basic
+    @Column(name = "img")
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
 
     @Basic
     @Column(name = "content")
@@ -63,5 +76,13 @@ public class Emergency extends IdEntity<Emergency> {
 
     public void setType(Byte type) {
         this.type = type;
+    }
+
+    public Byte getTop() {
+        return top;
+    }
+
+    public void setTop(Byte top) {
+        this.top = top;
     }
 }

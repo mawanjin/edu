@@ -3,6 +3,8 @@
  */
 package com.thinkgem.jeesite.modules.edu.service;
 
+import com.thinkgem.jeesite.common.persistence.Parameter;
+import com.thinkgem.jeesite.modules.edu.entity.Convenience;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
@@ -15,6 +17,8 @@ import com.thinkgem.jeesite.common.service.BaseService;
 import com.thinkgem.jeesite.common.utils.StringUtils;
 import com.thinkgem.jeesite.modules.edu.entity.Emergency;
 import com.thinkgem.jeesite.modules.edu.dao.EmergencyDao;
+
+import java.util.List;
 
 /**
  * 重要提示Service
@@ -51,5 +55,12 @@ public class EmergencyService extends BaseService {
 	public void delete(String id) {
 		emergencyDao.deleteById(id);
 	}
-	
+
+	public List<Emergency> findAll() {
+		return emergencyDao.find("from Emergency where status=1 and del_flag=0 order by createDate desc");
+	}
+	@Transactional(readOnly = false)
+	public void clearTop(Emergency emergency) {
+		emergencyDao.update("update Emergency set top=0 where top=1 and id!=:p1",new Parameter(emergency.getId()));
+	}
 }

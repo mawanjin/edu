@@ -29,13 +29,14 @@
 	</form:form>
 	<tags:message content="${message}"/>
 	<table id="contentTable" class="table table-striped table-bordered table-condensed">
-		<thead><tr><th>缩略图</th><th>标题</th><th>简介</th><th>状态</th><th>备注</th><shiro:hasPermission name="edu:activity:edit"><th>操作</th></shiro:hasPermission></tr></thead>
+		<thead><tr><th>缩略图</th><th>标题</th><th>简介</th><th>置顶</th><th>状态</th><th>备注</th><shiro:hasPermission name="edu:activity:edit"><th>操作</th></shiro:hasPermission></tr></thead>
 		<tbody>
 		<c:forEach items="${page.list}" var="activity">
 			<tr>
 				<td><img src="${ctxImg}/${activity.img}" width="30px" height="30px"/> </td>
 				<td><a href="${ctx}/edu/activity/form?id=${activity.id}">${activity.title}</a></td>
 				<td>${activity.summary}</td>
+				<td>${activity.top}</td>
 				<td>
 					<c:choose>
 						<c:when test="${activity.status==1}">已发布</c:when>
