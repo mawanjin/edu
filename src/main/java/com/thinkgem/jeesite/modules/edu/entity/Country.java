@@ -23,6 +23,8 @@ public class Country extends IdEntity<Country> {
     private String name;
     private String img;
     private Byte hot;
+    private Byte status;
+    private int porder;
 
     @Basic
     @Column(name = "name")
@@ -52,5 +54,25 @@ public class Country extends IdEntity<Country> {
 
     public void setHot(Byte hot) {
         this.hot = hot;
+    }
+
+    @Basic
+    @Column(name = "porder")
+    public int getPorder() {
+        return porder;
+    }
+
+    public void setPorder(int porder) {
+        this.porder = porder;
+    }
+
+    @Basic
+    @Column(name = "status")
+    public Byte getStatus() {
+        return status;
+    }
+
+    public void setStatus(Byte status) {
+        this.status = status;
     }
 }

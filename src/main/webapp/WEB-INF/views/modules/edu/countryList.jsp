@@ -29,20 +29,40 @@
 	</form:form>
 	<tags:message content="${message}"/>
 	<table id="contentTable" class="table table-striped table-bordered table-condensed">
-		<thead><tr><th>缩略图</th><th>名称</th><th>状态</th><th>备注</th><shiro:hasPermission name="edu:country:edit"><th>操作</th></shiro:hasPermission></tr></thead>
+		<thead><tr><th>缩略图</th><th>名称</th><th>顺序</th><th>类型</th><th>状态</th><th>备注</th><shiro:hasPermission name="edu:country:edit"><th>操作</th></shiro:hasPermission></tr></thead>
 		<tbody>
 		<c:forEach items="${page.list}" var="country">
 			<tr>
 				<td><img src="${ctxImg}/${country.img}" width="30px" height="30px"/> </td>
 				<td><a href="${ctx}/edu/country/form?id=${country.id}">${country.name}</a></td>
+				<td>${country.porder}</td>
 				<td>
 					<c:choose>
 						<c:when test="${country.hot eq '0'}">热门</c:when>
 						<c:when test="${country.hot eq '1'}">其他</c:when>
 					</c:choose>
 				</td>
+
+				<td>
+					<c:choose>
+						<c:when test="${country.status==1}">已发布</c:when>
+						<c:otherwise>
+							未发布
+						</c:otherwise>
+					</c:choose>
+				</td>
+
+
 				<td>${country.remarks}</td>
 				<shiro:hasPermission name="edu:country:edit"><td>
+					<c:choose>
+						<c:when test="${country.status==0}">
+							<a href="${ctx}/edu/country/publish?id=${country.id}&status=1" onclick="return confirmx('确认要发布该国家吗？', this.href)">发布</a>
+						</c:when>
+						<c:otherwise>
+							<a href="${ctx}/edu/country/publish?id=${country.id}&status=0" onclick="return confirmx('确认要取消发布该国家吗？', this.href)">取消发布</a>
+						</c:otherwise>
+					</c:choose>
     				<a href="${ctx}/edu/country/form?id=${country.id}">修改</a>
 					<a href="${ctx}/edu/country/delete?id=${country.id}" onclick="return confirmx('确认要删除该国家吗？', this.href)">删除</a>
 				</td></shiro:hasPermission>

@@ -123,6 +123,21 @@
 		</div>
 
 		<div class="control-group">
+			<label class="control-label" for="status">状态:</label>
+			<div class="controls">
+				<form:radiobutton path="status" value="0" checked="checked"   />未发布
+				<form:radiobutton path="status" value="1" />已发布
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label" for="porder">顺序:</label>
+			<div class="controls">
+				<form:input path="porder" htmlEscape="false" maxlength="200" class="required number" alt="数值越大越优先级越高" />
+			</div>
+		</div>
+
+		<div class="control-group">
 			<label class="control-label" for="remarks">备注:</label>
 			<div class="controls">
 				<form:textarea path="remarks" htmlEscape="false" rows="4" maxlength="200" class="input-xxlarge"/>

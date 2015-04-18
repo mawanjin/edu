@@ -6,6 +6,7 @@ package com.thinkgem.jeesite.modules.edu.web;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.thinkgem.jeesite.modules.edu.entity.Activity;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -85,4 +86,17 @@ public class CountryController extends BaseController {
 		return "redirect:"+Global.getAdminPath()+"/edu/country/?repage";
 	}
 
+	@RequiresPermissions("edu:country:edit")
+	@RequestMapping(value = "publish")
+	public String publish(String id,Byte status, RedirectAttributes redirectAttributes) {
+		Country country = countryService.get(id);
+		country.setStatus(status);
+		countryService.save(country);
+		if(status==1)
+			addMessage(redirectAttributes, "发布国家成功");
+		else
+			addMessage(redirectAttributes, "取消发布国家成功");
+
+		return "redirect:"+Global.getAdminPath()+"/edu/country/?repage";
+	}
 }

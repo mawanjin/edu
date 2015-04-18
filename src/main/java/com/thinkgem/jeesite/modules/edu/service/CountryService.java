@@ -16,6 +16,8 @@ import com.thinkgem.jeesite.common.utils.StringUtils;
 import com.thinkgem.jeesite.modules.edu.entity.Country;
 import com.thinkgem.jeesite.modules.edu.dao.CountryDao;
 
+import java.util.List;
+
 /**
  * 国家Service
  * @author lala
@@ -51,5 +53,8 @@ public class CountryService extends BaseService {
 	public void delete(String id) {
 		countryDao.deleteById(id);
 	}
-	
+
+	public List<Country> findAll() {
+		return countryDao.find("from Country where status=1 and del_flag=0 order by porder, createDate desc");
+	}
 }
