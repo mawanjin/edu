@@ -3,6 +3,7 @@
  */
 package com.thinkgem.jeesite.modules.edu.service;
 
+import com.thinkgem.jeesite.common.persistence.Parameter;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
@@ -33,6 +34,10 @@ public class SchoolService extends BaseService {
 	public School get(String id) {
 		return schoolDao.get(id);
 	}
+
+	public List<School> findByCountry(String id){
+		return schoolDao.find("from School where country.id=:p1",new Parameter(id));
+	}
 	
 	public Page<School> find(Page<School> page, School school) {
 		DetachedCriteria dc = schoolDao.createDetachedCriteria();
@@ -56,5 +61,9 @@ public class SchoolService extends BaseService {
 
 	public List<School> findAll() {
 		return schoolDao.findAll();
+	}
+
+	public List<School> findAllSchool(){
+		return schoolDao.find("from School where status=1 and del_flag=0 order by top desc");
 	}
 }

@@ -54,6 +54,10 @@ public class CountryService extends BaseService {
 		countryDao.deleteById(id);
 	}
 
+	public List<Country> findAllNormal(){
+		return countryDao.find("from Country where del_flag=0 order by porder, createDate desc");
+	}
+
 	public List<Country> findAll() {
 		return countryDao.find("from Country where status=1 and del_flag=0 order by porder, createDate desc");
 	}

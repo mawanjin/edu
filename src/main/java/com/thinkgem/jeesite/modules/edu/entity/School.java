@@ -5,10 +5,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by abcd on 15/3/24.
@@ -26,6 +23,7 @@ public class School extends IdEntity<School> {
     private String content;
     private Byte grade;
     private Byte status;
+    private Country country;
 
     @Basic
     @Column(name = "name")
@@ -95,5 +93,15 @@ public class School extends IdEntity<School> {
 
     public void setBadge(String badge) {
         this.badge = badge;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "country")
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
     }
 }

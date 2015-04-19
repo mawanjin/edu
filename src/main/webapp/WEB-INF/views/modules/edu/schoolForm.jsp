@@ -172,6 +172,19 @@
 		</div>
 
 		<div class="control-group">
+			<label class="control-label" for="summary">所属国家:</label>
+			<div class="controls">
+				<select name="country.id">
+					<c:forEach items="${countries}" var="country">
+
+						<option value="${country.id}" <c:if test="${school.country.id eq country.id}">selected</c:if> >${country.name}</option>
+					</c:forEach>
+				</select>
+			</div>
+		</div>
+
+
+		<div class="control-group">
 			<label class="control-label" for="grade">类型:</label>
 			<div class="controls">
 				<form:radiobuttons  path="grade" items="${fns:getDictList('edu_school_grade')}" itemLabel="label" itemValue="value" htmlEscape="false" />

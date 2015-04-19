@@ -6,6 +6,7 @@ package com.thinkgem.jeesite.modules.edu.web;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.thinkgem.jeesite.modules.edu.service.CountryService;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,8 @@ public class SchoolController extends BaseController {
 
 	@Autowired
 	private SchoolService schoolService;
+	@Autowired
+	private CountryService countryService;
 	
 	@ModelAttribute
 	public School get(@RequestParam(required=false) String id) {
@@ -63,6 +66,10 @@ public class SchoolController extends BaseController {
 	public String form(School school, Model model) {
 		school.setStatus(new Byte("0"));
 		school.setGrade(new Byte("0"));
+
+
+		model.addAttribute("countries",countryService.findAllNormal());
+
 		model.addAttribute("school", school);
 		return "modules/" + "edu/schoolForm";
 	}
