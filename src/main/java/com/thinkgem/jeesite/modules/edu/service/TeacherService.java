@@ -16,6 +16,8 @@ import com.thinkgem.jeesite.common.utils.StringUtils;
 import com.thinkgem.jeesite.modules.edu.entity.Teacher;
 import com.thinkgem.jeesite.modules.edu.dao.TeacherDao;
 
+import java.util.List;
+
 /**
  * 名师Service
  * @author lala
@@ -51,5 +53,8 @@ public class TeacherService extends BaseService {
 	public void delete(String id) {
 		teacherDao.deleteById(id);
 	}
-	
+
+	public List<Teacher> findAll() {
+		return teacherDao.find("from Teacher where status=1 and del_flag=0");
+	}
 }
