@@ -36,7 +36,7 @@ public class SchoolService extends BaseService {
 	}
 
 	public List<School> findByCountry(String id){
-		return schoolDao.find("from School where country.id=:p1",new Parameter(id));
+		return schoolDao.find("from School where country.id=:p1 and status=1 and del_flag=0",new Parameter(id));
 	}
 	
 	public Page<School> find(Page<School> page, School school) {
@@ -64,6 +64,6 @@ public class SchoolService extends BaseService {
 	}
 
 	public List<School> findAllSchool(){
-		return schoolDao.find("from School where status=1 and del_flag=0 order by top desc");
+		return schoolDao.find("from School where status=1 and del_flag=0");
 	}
 }
