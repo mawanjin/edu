@@ -29,11 +29,11 @@
 	</form:form>
 	<tags:message content="${message}"/>
 	<table id="contentTable" class="table table-striped table-bordered table-condensed">
-		<thead><tr><th>缩略图</th><th>标题</th><th>简介</th><th>状态</th><th>备注</th><shiro:hasPermission name="edu:activity:edit"><th>操作</th></shiro:hasPermission></tr></thead>
+		<thead><tr><th>缩略图</th><th>标题</th><th>简介</th><th>状态</th><th>备注</th><shiro:hasPermission name="edu:abroadhome:edit"><th>操作</th></shiro:hasPermission></tr></thead>
 		<tbody>
 		<c:forEach items="${page.list}" var="abroadhome">
 			<tr>
-				<td><c:if test="${not empty activity.img}">
+				<td><c:if test="${not empty abroadhome.img}">
 					<img src="${ctxImg}/${abroadhome.img}" width="30px" height="30px"/> </c:if></td>
 
 				<td><a href="${ctx}/edu/abroadhome/form?id=${abroadhome.id}">${abroadhome.title}</a></td>

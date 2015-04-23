@@ -3,6 +3,7 @@
  */
 package com.thinkgem.jeesite.modules.edu.service;
 
+import com.thinkgem.jeesite.modules.edu.entity.Activity;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
@@ -15,6 +16,8 @@ import com.thinkgem.jeesite.common.service.BaseService;
 import com.thinkgem.jeesite.common.utils.StringUtils;
 import com.thinkgem.jeesite.modules.edu.entity.Abroadhome;
 import com.thinkgem.jeesite.modules.edu.dao.AbroadhomeDao;
+
+import java.util.List;
 
 /**
  * 个人问答Service
@@ -51,5 +54,8 @@ public class AbroadhomeService extends BaseService {
 	public void delete(String id) {
 		abroadhomeDao.deleteById(id);
 	}
-	
+
+	public List<Abroadhome> findAll() {
+		return abroadhomeDao.find("from Abroadhome where status=1 and del_flag=0 ");
+	}
 }
