@@ -12,17 +12,16 @@ import com.thinkgem.jeesite.modules.edu.service.AbroadhomeService;
 import com.thinkgem.jeesite.modules.edu.service.EuserService;
 import com.thinkgem.jeesite.modules.edu.web.portal.dto.AbroadDto;
 import org.apache.commons.beanutils.PropertyUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * 海外之家Controller
@@ -85,10 +84,15 @@ public class FrontAbroadController extends BaseController {
 	@RequestMapping(value = {"enroll/save"})
 	@ResponseBody
 	public boolean enroll(String userId,String abroadId,HttpServletRequest request, HttpServletResponse response, Model model) {
-		AbroadEnroll abroadEnroll = new AbroadEnroll();
-		abroadEnroll.setEuser(euserService.get(userId));
-		abroadEnroll.setAbroadhome(abroadhomeService.get(abroadId));
-		abroadEnrollService.save(abroadEnroll);
-		return true;
+		//先查找是否已报名
+		if(abroadEnrollService.isEnrolled(userId,abroadId)){
+			return false;
+		}else{
+			AbroadEnroll abroadEnroll = new AbroadEnroll();
+			abroadEnroll.setEuser(euserService.get(userId));
+			abroadEnroll.setAbroadhome(abroadhomeService.get(abroadId));
+			abroadEnrollService.save(abroadEnroll);
+			return true;
+		}
 	}
 }

@@ -3,6 +3,7 @@
  */
 package com.thinkgem.jeesite.modules.edu.service;
 
+import com.thinkgem.jeesite.common.persistence.Parameter;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
@@ -15,6 +16,8 @@ import com.thinkgem.jeesite.common.service.BaseService;
 import com.thinkgem.jeesite.common.utils.StringUtils;
 import com.thinkgem.jeesite.modules.edu.entity.AbroadEnroll;
 import com.thinkgem.jeesite.modules.edu.dao.AbroadEnrollDao;
+
+import java.util.List;
 
 /**
  * 海外之家报名Service
@@ -51,5 +54,11 @@ public class AbroadEnrollService extends BaseService {
 	public void delete(String id) {
 		abroadEnrollDao.deleteById(id);
 	}
-	
+
+	public boolean isEnrolled(String uid,String abroadHomeId) {
+		List rs = abroadEnrollDao.find("from AbroadEnroll where euser.id=:p1 and abroadhome.id=:p2 and del_flag=0", new Parameter(new String[]{uid, abroadHomeId}));
+		if(rs!=null&&rs.size()>0)return true;
+
+		return false;
+	}
 }

@@ -100,9 +100,9 @@ public class AbroadEnrollController extends BaseController {
 		abroadEnroll.setStatus(status);
 		abroadEnrollService.save(abroadEnroll);
 		if(status==1)
-		addMessage(redirectAttributes, "发布海外之家报名成功");
+			addMessage(redirectAttributes, "发布海外之家报名成功");
 		else
-		addMessage(redirectAttributes, "取消发布海外之家报名成功");
+			addMessage(redirectAttributes, "取消发布海外之家报名成功");
 
 		return "redirect:"+Global.getAdminPath()+"/edu/abroadEnroll/?repage";
 	}
