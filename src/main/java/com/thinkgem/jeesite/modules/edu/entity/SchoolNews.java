@@ -5,25 +5,24 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by abcd on 15/3/24.
  */
 @Entity
-@Table(name = "edu_abroadhome")
+@Table(name = "edu_school_news")
 @DynamicInsert
 @DynamicUpdate
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class Abroadhome extends IdEntity<Abroadhome> {
+public class SchoolNews extends IdEntity<SchoolNews> {
     private String title;
     private String img;
     private String summary;
     private String content;
     private Byte status;
+    private String top;
+    private School school;
 
     @Basic
     @Column(name = "title")
@@ -75,12 +74,32 @@ public class Abroadhome extends IdEntity<Abroadhome> {
         this.status = status;
     }
 
+    @Basic
+    @Column(name = "top")
+    public String getTop() {
+        return top;
+    }
+
+    public void setTop(String top) {
+        this.top = top;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "school")
+    public School getSchool() {
+        return school;
+    }
+
+    public void setSchool(School school) {
+        this.school = school;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Abroadhome that = (Abroadhome) o;
+        SchoolNews that = (SchoolNews) o;
 
         if (content != null ? !content.equals(that.content) : that.content != null) return false;
         if (createDate != null ? !createDate.equals(that.createDate) : that.createDate != null) return false;

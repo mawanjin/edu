@@ -23,6 +23,7 @@ public class Euser extends IdEntity<Euser> {
     private String password;
     private Byte type;//0:学生 1:家长 2:管理员
     private School school;//就读学校
+
     private Date birth;
     //以下属性是监护人特有
     private String teachTime;//教学时间
@@ -117,4 +118,5 @@ public class Euser extends IdEntity<Euser> {
     public void setAbility(String ability) {
         this.ability = ability;
     }
+
 }

@@ -5,14 +5,11 @@ import java.util.Date;
 /**
  * Created by wanjinma on 15/4/18.
  */
-public class AbroadDto {
+public class ReportGuardianDto {
     private String id;
     private String title;
-    private String img;
-    private String summary;
     private String content;
     protected Date createDate;// 创建日期
-    private boolean enrolled;
 
     public String getId() {
         return id;
@@ -30,22 +27,6 @@ public class AbroadDto {
         this.title = title;
     }
 
-    public String getImg() {
-        return img;
-    }
-
-    public void setImg(String img) {
-        this.img = img;
-    }
-
-    public String getSummary() {
-        return summary;
-    }
-
-    public void setSummary(String summary) {
-        this.summary = summary;
-    }
-
     public String getContent() {
         return content;
     }
@@ -60,13 +41,5 @@ public class AbroadDto {
 
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
-    }
-
-    public boolean isEnrolled() {
-        return enrolled;
-    }
-
-    public void setEnrolled(boolean isEnrolled) {
-        this.enrolled = isEnrolled;
     }
 }

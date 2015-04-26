@@ -3,6 +3,8 @@
  */
 package com.thinkgem.jeesite.modules.edu.service;
 
+import com.thinkgem.jeesite.common.persistence.Parameter;
+import com.thinkgem.jeesite.modules.edu.entity.Euser;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
@@ -15,6 +17,9 @@ import com.thinkgem.jeesite.common.service.BaseService;
 import com.thinkgem.jeesite.common.utils.StringUtils;
 import com.thinkgem.jeesite.modules.edu.entity.UserRelation;
 import com.thinkgem.jeesite.modules.edu.dao.UserRelationDao;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 用户关系Service
@@ -55,5 +60,12 @@ public class UserRelationService extends BaseService {
 	public void delete(String id) {
 		userRelationDao.deleteById(id);
 	}
-	
+
+	public Euser findGuardian(String id) {
+		List<UserRelation> guardians = userRelationDao.find("from UserRelation where eduUserById.id=:p1",new Parameter(id));
+		if(guardians!=null&&guardians.size()>0){
+			return guardians.get(0).getEduUserByParentId();
+		}
+		return null;
+	}
 }

@@ -67,7 +67,6 @@ public class SchoolController extends BaseController {
 		school.setStatus(new Byte("0"));
 		school.setGrade(new Byte("0"));
 
-
 		model.addAttribute("countries",countryService.findAllNormal());
 
 		model.addAttribute("school", school);

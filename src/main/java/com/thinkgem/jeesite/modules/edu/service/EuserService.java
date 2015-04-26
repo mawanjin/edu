@@ -3,6 +3,7 @@
  */
 package com.thinkgem.jeesite.modules.edu.service;
 
+import com.thinkgem.jeesite.common.persistence.Parameter;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
@@ -52,8 +53,6 @@ public class EuserService extends BaseService {
 		return euserDao.find(page,"select distinct euser from Euser euser where euser.type='0' and euser.delFlag='0' and euser.id not in (select eduUserById.id from UserRelation where delFlag='0' ) ");
 	}
 
-
-	
 	@Transactional(readOnly = false)
 	public void save(Euser euser) {
 		euserDao.clear();
@@ -67,5 +66,11 @@ public class EuserService extends BaseService {
 
 	public List<Euser> findAll() {
 		return euserDao.findAll();
+	}
+
+	public Euser login(String loginName, String password) {
+		List<Euser> eusers = euserDao.find("from Euser where loginName=:p1 and password=:p2 and del_flag=0", new Parameter(new String[]{loginName, password}));
+		if(eusers!=null&&eusers.size()>0)return eusers.get(0);
+		return null;
 	}
 }

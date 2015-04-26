@@ -46,9 +46,9 @@ public class Generate {
 		
 		String moduleName = "edu";			// 模块名，例：sys
 		String subModuleName = "";				// 子模块名（可选） 
-		String className = "abroadEnroll";			// 类名，例：user
+		String className = "schoolNews";			// 类名，例：user
 		String classAuthor = "lala";		// 类作者，例：ThinkGem
-		String functionName = "海外之家报名";			// 功能名，例：用户
+		String functionName = "学校新闻";			// 功能名，例：用户
 
 		// 是否启用生成工具
 		//Boolean isEnable = false;

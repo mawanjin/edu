@@ -5,14 +5,14 @@ import java.util.Date;
 /**
  * Created by wanjinma on 15/4/18.
  */
-public class AbroadDto {
+public class SchoolNewsDto {
     private String id;
     private String title;
     private String img;
     private String summary;
     private String content;
+    private String top;
     protected Date createDate;// 创建日期
-    private boolean enrolled;
 
     public String getId() {
         return id;
@@ -54,19 +54,19 @@ public class AbroadDto {
         this.content = content;
     }
 
+    public String getTop() {
+        return top;
+    }
+
+    public void setTop(String top) {
+        this.top = top;
+    }
+
     public Date getCreateDate() {
         return createDate;
     }
 
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
-    }
-
-    public boolean isEnrolled() {
-        return enrolled;
-    }
-
-    public void setEnrolled(boolean isEnrolled) {
-        this.enrolled = isEnrolled;
     }
 }

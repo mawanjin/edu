@@ -40,15 +40,15 @@ public class FrontAbroadController extends BaseController {
 
 	@Autowired
 	private EuserService euserService;
-	
 
 	@ResponseBody
 	@RequestMapping(value = {"get"})
-	public AbroadDto get(@RequestParam(required=true) String id) {
+	public AbroadDto get(@RequestParam(required=true) String abroadhome,@RequestParam(required=false) String uid) {
 		AbroadDto rs = new AbroadDto();
-		if (StringUtils.isNotBlank(id)){
+		if (StringUtils.isNotBlank(abroadhome)){
 			try {
-				PropertyUtils.copyProperties(rs, abroadhomeService.get(id));
+				PropertyUtils.copyProperties(rs, abroadhomeService.get(abroadhome));
+				rs.setEnrolled(abroadEnrollService.isEnrolled(uid, abroadhome));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
