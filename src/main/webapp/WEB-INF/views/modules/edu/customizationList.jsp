@@ -29,10 +29,9 @@
 	</form:form>
 	<tags:message content="${message}"/>
 	<table id="contentTable" class="table table-striped table-bordered table-condensed">
-		<thead><tr><th>缩略图</th><th>名称</th><th>状态</th><th>备注</th><shiro:hasPermission name="edu:customization:edit"><th>操作</th></shiro:hasPermission></tr></thead>
+		<thead><tr><th>缩略图</th><th>名称</th><th>介绍</th><th>状态</th><th>备注</th><shiro:hasPermission name="edu:customization:edit"><th>操作</th></shiro:hasPermission></tr></thead>
 		<tbody>
 		<c:forEach items="${page.list}" var="customization">
-
 
 			<tr>
 				<td>
@@ -40,6 +39,7 @@
 						<img src="${ctxImg}/${customization.img}" width="30px" height="30px"/> </c:if>
 				</td>
 				<td><a href="${ctx}/edu/customization/form?id=${customization.id}">${customization.name}</a></td>
+				<td>${fn:substring(customization.summary,0 , 16)}</td>
                 <td>
                     <c:choose>
                         <c:when test="${customization.status==1}">已发布</c:when>

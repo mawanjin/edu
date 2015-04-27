@@ -114,6 +114,13 @@
 			</div>
 		</div>
 
+		<div class="control-group">
+			<label class="control-label" for="summary">介绍:</label>
+			<div class="controls">
+				<form:input path="summary" htmlEscape="false" maxlength="200" class="required"/>
+			</div>
+		</div>
+
         <div class="control-group">
             <label class="control-label" for="status">状态:</label>
             <div class="controls">

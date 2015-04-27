@@ -16,6 +16,8 @@ import com.thinkgem.jeesite.common.utils.StringUtils;
 import com.thinkgem.jeesite.modules.edu.entity.Customization;
 import com.thinkgem.jeesite.modules.edu.dao.CustomizationDao;
 
+import java.util.List;
+
 /**
  * 私人定制模板Service
  * @author lala
@@ -51,5 +53,8 @@ public class CustomizationService extends BaseService {
 	public void delete(String id) {
 		customizationDao.deleteById(id);
 	}
-	
+
+	public List<Customization> findAll() {
+		return customizationDao.find("from Customization where status=1 and del_flag=0");
+	}
 }

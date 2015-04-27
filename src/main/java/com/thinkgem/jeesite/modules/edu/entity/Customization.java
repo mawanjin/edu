@@ -22,6 +22,7 @@ public class Customization extends IdEntity<Customization> {
     private String name;
     private String img;
     private Byte status;
+    private String summary;
 
     @Basic
     @Column(name = "name")
@@ -51,5 +52,15 @@ public class Customization extends IdEntity<Customization> {
 
     public void setStatus(Byte status) {
         this.status = status;
+    }
+
+    @Basic
+    @Column(name = "summary")
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
     }
 }

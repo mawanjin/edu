@@ -3,6 +3,7 @@
  */
 package com.thinkgem.jeesite.modules.edu.service;
 
+import com.thinkgem.jeesite.common.persistence.Parameter;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
@@ -15,6 +16,8 @@ import com.thinkgem.jeesite.common.service.BaseService;
 import com.thinkgem.jeesite.common.utils.StringUtils;
 import com.thinkgem.jeesite.modules.edu.entity.Report;
 import com.thinkgem.jeesite.modules.edu.dao.ReportDao;
+
+import java.util.List;
 
 /**
  * 日常报告Service
@@ -55,5 +58,8 @@ public class ReportService extends BaseService {
 	public void delete(String id) {
 		reportDao.deleteById(id);
 	}
-	
+
+	public List<Report> findByType(Byte type) {
+		return reportDao.find("from Report where type=:p1 and status=1 and del_flag=0",new Parameter(type));
+	}
 }

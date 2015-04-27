@@ -19,7 +19,7 @@ public class Report extends IdEntity<Report> {
     private String title;
     private String content;
     private Byte status;
-    private Byte type;//0 周报告 1 月报告 2 季报告 3 年报告
+    private Byte type;//0 周报告 1 月报告 2 学期报告 3 年报告
 
     @Basic
     @Column(name = "title")
