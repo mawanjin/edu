@@ -44,6 +44,7 @@ public class SisterQuestionService extends BaseService {
 	
 	@Transactional(readOnly = false)
 	public void save(SisterQuestion sisterQuestion) {
+		sisterQuestionDao.clear();
 		sisterQuestionDao.save(sisterQuestion);
 	}
 	
