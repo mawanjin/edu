@@ -26,14 +26,31 @@
 		<input id="pageSize" name="pageSize" type="hidden" value="${page.pageSize}"/>
 		<label>标题 ：</label><form:input path="title" htmlEscape="false" maxlength="50" class="input-small"/>
 		&nbsp;<input id="btnSubmit" class="btn btn-primary" type="submit" value="查询"/>
+		<form:radiobuttons onclick="$('#searchForm').submit();" path="type" items="${fns:getDictList('edu_contact_type')}" itemLabel="label" itemValue="value" htmlEscape="false" />
 	</form:form>
 	<tags:message content="${message}"/>
 	<table id="contentTable" class="table table-striped table-bordered table-condensed">
-		<thead><tr><th>标题</th><th>内容</th><th>时间</th><shiro:hasPermission name="edu:suggestion:edit"><th>操作</th></shiro:hasPermission></tr></thead>
+		<thead><tr><th>标题</th><th>类型</th><th>内容</th><th>时间</th><shiro:hasPermission name="edu:suggestion:edit"><th>操作</th></shiro:hasPermission></tr></thead>
 		<tbody>
 		<c:forEach items="${page.list}" var="suggestion">
 			<tr>
 				<td><a href="${ctx}/edu/suggestion/form?id=${suggestion.id}">${suggestion.title}</a></td>
+				<td>
+					<c:choose>
+						<c:when test="${suggestion.type eq 0}">
+							联系监护人
+						</c:when>
+						<c:when test="${suggestion.type eq 1}">
+							联系学校
+						</c:when>
+						<c:when test="${suggestion.type eq 2}">
+							联系海外服务中心
+						</c:when>
+						<c:when test="${suggestion.type eq 3}">
+							联系寄宿家庭
+						</c:when>
+					</c:choose>
+				</td>
 				<td>${suggestion.msg}</td>
 				<td>${suggestion.createDate}</td>
 				<shiro:hasPermission name="edu:suggestion:edit"><td>

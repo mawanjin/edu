@@ -21,6 +21,7 @@ import javax.persistence.Table;
 public class Suggestion extends IdEntity<Suggestion> {
     private String title;
     private String msg;
+    private Byte type;
 
     @Basic
     @Column(name = "title")
@@ -42,5 +43,13 @@ public class Suggestion extends IdEntity<Suggestion> {
         this.msg = msg;
     }
 
+    @Basic
+    @Column(name = "type")
+    public Byte getType() {
+        return type;
+    }
 
+    public void setType(Byte type) {
+        this.type = type;
+    }
 }

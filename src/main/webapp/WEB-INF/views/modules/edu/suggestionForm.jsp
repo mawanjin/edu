@@ -33,6 +33,15 @@
 				<form:input path="msg" htmlEscape="false" maxlength="200" class="required"/>
 			</div>
 		</div>
+
+		<div class="control-group">
+			<label class="control-label" for="type">类型:</label>
+			<div class="controls">
+				<form:radiobuttons onclick="$('#searchForm').submit();" path="type" items="${fns:getDictList('edu_contact_type')}" itemLabel="label" itemValue="value" htmlEscape="false" />
+			</div>
+		</div>
+
+
 		<div class="form-actions">
 			<shiro:hasPermission name="edu:suggestion:edit">
 				<input id="btnSubmit" class="btn btn-primary" type="submit" value="保 存"/>&nbsp;

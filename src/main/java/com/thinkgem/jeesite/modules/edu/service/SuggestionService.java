@@ -37,6 +37,9 @@ public class SuggestionService extends BaseService {
 		if (StringUtils.isNotEmpty(suggestion.getTitle())){
 			dc.add(Restrictions.like("title", "%"+suggestion.getTitle()+"%"));
 		}
+		if (suggestion.getType()!=null){
+			dc.add(Restrictions.eq("type", suggestion.getType()));
+		}
 		dc.add(Restrictions.eq(Suggestion.FIELD_DEL_FLAG, Suggestion.DEL_FLAG_NORMAL));
 		dc.addOrder(Order.desc("id"));
 		return suggestionDao.find(page, dc);

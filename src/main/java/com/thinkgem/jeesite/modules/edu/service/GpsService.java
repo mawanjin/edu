@@ -3,6 +3,7 @@
  */
 package com.thinkgem.jeesite.modules.edu.service;
 
+import com.thinkgem.jeesite.common.persistence.Parameter;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
@@ -15,6 +16,8 @@ import com.thinkgem.jeesite.common.service.BaseService;
 import com.thinkgem.jeesite.common.utils.StringUtils;
 import com.thinkgem.jeesite.modules.edu.entity.Gps;
 import com.thinkgem.jeesite.modules.edu.dao.GpsDao;
+
+import java.util.List;
 
 /**
  * gpsService
@@ -52,5 +55,8 @@ public class GpsService extends BaseService {
 	public void delete(String id) {
 		gpsDao.deleteById(id);
 	}
-	
+
+	public List<Gps> findAll(String uid) {
+		return gpsDao.find("from Gps where user.id=:p1",new Parameter(uid));
+	}
 }
