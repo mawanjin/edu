@@ -120,6 +120,14 @@
 		</div>
 
         <div class="control-group">
+            <label class="control-label" for="enrollable">是否可报名:</label>
+            <div class="controls">
+                <form:radiobutton path="enrollable" value="0" checked="checked"   />不可报名
+                <form:radiobutton path="enrollable" value="1" />可报名
+            </div>
+        </div>
+
+		<div class="control-group">
             <label class="control-label" for="status">状态:</label>
             <div class="controls">
                 <form:radiobutton path="status" value="0" checked="checked"   />未发布

@@ -57,6 +57,6 @@ public class GpsService extends BaseService {
 	}
 
 	public List<Gps> findAll(String uid) {
-		return gpsDao.find("from Gps where user.id=:p1",new Parameter(uid));
+		return gpsDao.find("from Gps where user.id=:p1 and del_flag =0",new Parameter(uid));
 	}
 }

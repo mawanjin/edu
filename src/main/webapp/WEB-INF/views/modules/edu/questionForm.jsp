@@ -39,7 +39,7 @@
 			<div class="controls">
 				<select name="euser.id">
 					<c:forEach items="${users}" var="user">
-						<option value="${user.id}" <c:if test="${user.id eq question.euser.id}" >selected="selected" </c:if>>${user.name}</option>
+						<option value="${user.id}" <c:if test="${user.id eq question.euser.id}" >selected="selected" </c:if>>${user.loginName}</option>
 					</c:forEach>
 				</select>
 			</div>

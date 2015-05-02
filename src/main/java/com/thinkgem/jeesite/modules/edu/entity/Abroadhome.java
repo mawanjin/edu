@@ -24,6 +24,7 @@ public class Abroadhome extends IdEntity<Abroadhome> {
     private String summary;
     private String content;
     private Byte status;
+    private Byte enrollable;
 
     @Basic
     @Column(name = "title")
@@ -73,6 +74,16 @@ public class Abroadhome extends IdEntity<Abroadhome> {
 
     public void setStatus(Byte status) {
         this.status = status;
+    }
+
+    @Basic
+    @Column(name = "enrollable")
+    public Byte getEnrollable() {
+        return enrollable;
+    }
+
+    public void setEnrollable(Byte enrollable) {
+        this.enrollable = enrollable;
     }
 
     @Override

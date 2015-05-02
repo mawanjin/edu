@@ -13,6 +13,7 @@ public class AbroadDto {
     private String content;
     protected Date createDate;// 创建日期
     private boolean enrolled;
+    private Byte enrollable;
 
     public String getId() {
         return id;
@@ -68,5 +69,13 @@ public class AbroadDto {
 
     public void setEnrolled(boolean isEnrolled) {
         this.enrolled = isEnrolled;
+    }
+
+    public Byte getEnrollable() {
+        return enrollable;
+    }
+
+    public void setEnrollable(Byte enrollable) {
+        this.enrollable = enrollable;
     }
 }

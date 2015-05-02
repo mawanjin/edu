@@ -73,4 +73,10 @@ public class EuserService extends BaseService {
 		if(eusers!=null&&eusers.size()>0)return eusers.get(0);
 		return null;
 	}
+
+	public Euser findByLoginName(String loginName) {
+		List<Euser> rs =  euserDao.find("from Euser where loginName=:p1 and del_flag=0 ", new Parameter(loginName));
+		if(rs!=null&&rs.size()>0)return rs.get(0);
+		return null;
+	}
 }

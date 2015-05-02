@@ -29,7 +29,7 @@
 	</form:form>
 	<tags:message content="${message}"/>
 	<table id="contentTable" class="table table-striped table-bordered table-condensed">
-		<thead><tr><th>缩略图</th><th>标题</th><th>简介</th><th>状态</th><th>备注</th><shiro:hasPermission name="edu:abroadhome:edit"><th>操作</th></shiro:hasPermission></tr></thead>
+		<thead><tr><th>缩略图</th><th>标题</th><th>简介</th><th>状态</th><th>是否可报名</th><th>备注</th><shiro:hasPermission name="edu:abroadhome:edit"><th>操作</th></shiro:hasPermission></tr></thead>
 		<tbody>
 		<c:forEach items="${page.list}" var="abroadhome">
 			<tr>
@@ -43,6 +43,15 @@
                         <c:when test="${abroadhome.status==1}">已发布</c:when>
                         <c:otherwise>
                             未发布
+                        </c:otherwise>
+                    </c:choose>
+                </td>
+
+				<td>
+                    <c:choose>
+                        <c:when test="${abroadhome.enrollable==0}">不可报名</c:when>
+                        <c:otherwise>
+                            可报名
                         </c:otherwise>
                     </c:choose>
                 </td>

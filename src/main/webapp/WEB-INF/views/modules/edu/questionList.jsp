@@ -29,12 +29,13 @@
 	</form:form>
 	<tags:message content="${message}"/>
 	<table id="contentTable" class="table table-striped table-bordered table-condensed">
-		<thead><tr><th>标题</th><th>留言者</th><th>内容</th><th>回复</th><shiro:hasPermission name="edu:question:edit"><th>操作</th></shiro:hasPermission></tr></thead>
+		<thead><tr><th>标题</th><th>留言者</th><th>登录名</th><th>内容</th><th>回复</th><shiro:hasPermission name="edu:question:edit"><th>操作</th></shiro:hasPermission></tr></thead>
 		<tbody>
 		<c:forEach items="${page.list}" var="question">
 			<tr>
 				<td><a href="${ctx}/edu/question/form?id=${question.id}">${question.title}</a></td>
 				<td>${question.euser.name}</td>
+				<td>${question.euser.loginName}</td>
                 <td>
 						${question.msg}
                 </td>
