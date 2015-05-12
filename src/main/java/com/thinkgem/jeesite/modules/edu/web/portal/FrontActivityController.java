@@ -71,6 +71,10 @@ public class FrontActivityController extends BaseController {
 				ActivityDto activityDto = new ActivityDto();
 				try {
 					PropertyUtils.copyProperties(activityDto,activity1);
+					if(StringUtils.isNotEmpty(activityDto.getContent())){
+						String domain = "http://"+request.getServerName();
+						activityDto.setContent(activityDto.getContent().replaceAll("\\/userfiles",domain+"\\/userfiles"));
+					}
 					rs.add(activityDto);
 				} catch (Exception e) {
 					e.printStackTrace();
