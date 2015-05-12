@@ -69,6 +69,12 @@ public class FrontAbroadController extends BaseController {
 				AbroadDto abroadDto = new AbroadDto();
 				try {
 					PropertyUtils.copyProperties(abroadDto,abroadhome);
+
+					if(StringUtils.isNotEmpty(abroadDto.getContent())){
+						String domain = "http://"+request.getServerName();
+						abroadDto.setContent(abroadDto.getContent().replaceAll("\\/userfiles",domain+"\\/userfiles"));
+					}
+
 					rs.add(abroadDto);
 				} catch (Exception e) {
 					e.printStackTrace();
