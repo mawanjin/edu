@@ -9,7 +9,9 @@ public class ReportGuardianDto {
     private String id;
     private String title;
     private String content;
+    private String remarks;
     protected Date createDate;// 创建日期
+
 
     public String getId() {
         return id;
@@ -41,5 +43,13 @@ public class ReportGuardianDto {
 
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
     }
 }

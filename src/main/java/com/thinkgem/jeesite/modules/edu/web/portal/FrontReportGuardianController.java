@@ -62,6 +62,10 @@ public class FrontReportGuardianController extends BaseController {
 				ReportGuardianDto reportGuardianDto = new ReportGuardianDto();
 				try {
 					PropertyUtils.copyProperties(reportGuardianDto,reportGuardian);
+                    if(StringUtils.isNotEmpty(reportGuardianDto.getContent())){
+                        String domain = "http://"+request.getServerName();
+                        reportGuardianDto.setContent(reportGuardianDto.getContent().replaceAll("\\/userfiles",domain+"\\/userfiles"));
+                    }
 					rs.add(reportGuardianDto);
 				} catch (Exception e) {
 					e.printStackTrace();
