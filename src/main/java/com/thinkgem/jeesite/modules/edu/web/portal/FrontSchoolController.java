@@ -92,7 +92,16 @@ public class FrontSchoolController extends BaseController {
 	}
 
 
-
+	/**
+	 *
+	 * 国家固定死就三个国家，前台页面写死。
+	 *
+	 * @param id 67be4291d55d4341ae74ca803372b97d 美国 3a589f5d09a24e3b8d23ace5336aed98澳大利亚 cd08ec3109e4488b8c8b7f4d6237ea63英国
+	 * @param request
+	 * @param response
+	 * @param model
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping(value = {"getByCountryId"})
 	public List<SchoolDto> getByCountryId(String id, HttpServletRequest request, HttpServletResponse response, Model model) {
