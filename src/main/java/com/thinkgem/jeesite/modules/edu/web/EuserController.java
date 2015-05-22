@@ -71,7 +71,7 @@ public class EuserController extends BaseController {
 	@RequiresPermissions("edu:euser:view")
 	@RequestMapping(value = "form")
 	public String form(Euser euser, Model model) {
-
+        if(euser==null)
 		euser.setType(new Byte("0"));
 		model.addAttribute("euser", euser);
 		model.addAttribute("schools", schoolService.findAll());
