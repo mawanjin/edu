@@ -21,7 +21,7 @@ public class Euser extends IdEntity<Euser> {
     private String loginName;
     private String nickName;
     private String password;
-    private Byte type;//0:学生 1:家长 2:管理员
+    private Byte type;//0:学生 1:家长 2:管理员 3:监护人
     private School school;//就读学校
 
     private Date birth;

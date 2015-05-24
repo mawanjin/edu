@@ -63,7 +63,7 @@ public class UserRelationController extends BaseController {
 	@RequestMapping(value = "form")
 	public String form(UserRelation userRelation, Model model) {
 		model.addAttribute("userRelation", userRelation);
-		Page<Euser> page = euserService.findUserWithoutRelation(new Page<Euser>(1, 10));
+		Page<Euser> page = euserService.findUserWithoutRelation(new Page<Euser>(1, 100),userRelation.getEduUserByParentId().getId());
 		model.addAttribute("euser",new Euser());
 		model.addAttribute("page", page);
 		model.addAttribute("user",euserService.get(userRelation.getEduUserByParentId().getId()));
@@ -75,7 +75,7 @@ public class UserRelationController extends BaseController {
 	@RequestMapping(value = "form/filter")
 	public String form(Euser euser,UserRelation userRelation,HttpServletRequest request, HttpServletResponse response, Model model) {
 		model.addAttribute("euser", euser);
-		Page<Euser> page = euserService.findUserWithoutRelation(new Page<Euser>(request, response));
+		Page<Euser> page = euserService.findUserWithoutRelation(new Page<Euser>(request, response),userRelation.getEduUserByParentId().getId());
 		model.addAttribute("user",euserService.get(userRelation.getEduUserByParentId().getId()));
 		model.addAttribute("page", page);
 		return "modules/" + "edu/userRelationForm";
