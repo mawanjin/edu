@@ -74,4 +74,10 @@ public class FrontLoginController extends BaseController {
         return registerDto;
     }
 
+    @ResponseBody
+    @RequestMapping(value = "getGuardian")
+    public Euser getGuardian(String uid){
+        return userRelationService.findGuardianByUid(uid);
+    }
+
 }

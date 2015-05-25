@@ -49,8 +49,8 @@ public class EuserService extends BaseService {
 		return euserDao.find(page, dc);
 	}
 
-	public Page<Euser> findUserWithoutRelation(Page<Euser> page) {
-		return euserDao.find(page,"select distinct euser from Euser euser where euser.type='0' and euser.delFlag='0' and euser.id not in (select eduUserById.id from UserRelation where delFlag='0' ) ");
+	public Page<Euser> findUserWithoutRelation(Page<Euser> page,String uid) {
+		return euserDao.find(page,"select distinct euser from Euser euser where euser.type='0' and euser.delFlag='0' and euser.id not in (select eduUserById.id from UserRelation where delFlag='0' and eduUserByParentId='"+uid+"' ) ");
 	}
 
 	@Transactional(readOnly = false)

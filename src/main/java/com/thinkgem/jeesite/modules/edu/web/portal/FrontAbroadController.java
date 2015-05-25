@@ -92,7 +92,7 @@ public class FrontAbroadController extends BaseController {
 	public boolean enroll(String userId,String abroadId,HttpServletRequest request, HttpServletResponse response, Model model) {
 		//先查找是否已报名
 		if(abroadEnrollService.isEnrolled(userId,abroadId)){
-			return false;
+			return true;
 		}else{
 			AbroadEnroll abroadEnroll = new AbroadEnroll();
 			abroadEnroll.setEuser(euserService.get(userId));

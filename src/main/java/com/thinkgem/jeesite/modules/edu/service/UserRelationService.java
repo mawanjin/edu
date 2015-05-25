@@ -40,15 +40,13 @@ public class UserRelationService extends BaseService {
 	public Page<UserRelation> find(Page<UserRelation> page, UserRelation userRelation) {
 		DetachedCriteria dc = userRelationDao.createDetachedCriteria();
 		if (userRelation.getEduUserById()!=null&&StringUtils.isNotEmpty(userRelation.getEduUserById().getName())){
-//			dc.add(Restrictions.like("eduUserById.name", "%"+userRelation.getEduUserById().getName()+"%"));
 			return userRelationDao.find(page,"from UserRelation where delFlag='0' and eduUserById.name like '%"+userRelation.getEduUserById().getName()+"%'  order by id desc ");
+		}else if(userRelation.getEduUserByParentId()!=null){
+			return userRelationDao.find(page,"from UserRelation where delFlag='0' and eduUserByParentId.id = '"+userRelation.getEduUserByParentId().getId()+"'  order by id desc ");
 		}
-//		dc.add(Restrictions.eq(UserRelation.FIELD_DEL_FLAG, UserRelation.DEL_FLAG_NORMAL));
-//		dc.addOrder(Order.desc("id"));
 
 		return userRelationDao.find(page,"from UserRelation where delFlag='0' order by id desc ");
 
-//		return userRelationDao.find(page, dc);
 	}
 	
 	@Transactional(readOnly = false)
@@ -61,11 +59,26 @@ public class UserRelationService extends BaseService {
 		userRelationDao.deleteById(id);
 	}
 
-	public Euser findGuardian(String id) {
-		List<UserRelation> guardians = userRelationDao.find("from UserRelation where eduUserById.id=:p1",new Parameter(id));
+	/**
+	 * 家长找到监护人
+	 * @param uid 家长
+	 * @return
+	 */
+	public Euser findGuardian(String uid) {
+		List<UserRelation> students = userRelationDao.find("from UserRelation where eduUserByParentId.id=:p1 and delFlag='0'",new Parameter(uid));
+		if(students==null||students.size()==0)return null;
+		Euser student = students.get(0).getEduUserById();
+
+		List<UserRelation> guardians = userRelationDao.find("from UserRelation where eduUserById.id=:p1 and eduUserByParentId.type=3 and delFlag='0'",new Parameter(student.getId()));
 		if(guardians!=null&&guardians.size()>0){
 			return guardians.get(0).getEduUserByParentId();
 		}
 		return null;
+	}
+
+	public Euser findGuardianByUid(String uid){
+		List<UserRelation> guardian = userRelationDao.find("from UserRelation where eduUserById.id=:p1 and delFlag='0' and eduUserByParentId.type=3  ",new Parameter(uid));
+		if(guardian==null||guardian.size()==0)return null;
+		return guardian.get(0).getEduUserByParentId();
 	}
 }
