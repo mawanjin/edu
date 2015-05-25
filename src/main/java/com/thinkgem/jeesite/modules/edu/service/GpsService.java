@@ -4,6 +4,7 @@
 package com.thinkgem.jeesite.modules.edu.service;
 
 import com.thinkgem.jeesite.common.persistence.Parameter;
+import com.thinkgem.jeesite.modules.edu.entity.Euser;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
@@ -37,11 +38,11 @@ public class GpsService extends BaseService {
 	
 	public Page<Gps> find(Page<Gps> page, Gps gps) {
 		DetachedCriteria dc = gpsDao.createDetachedCriteria();
-		if (gps.getUser()!=null){
+		if (gps.getUser()!=null&& org.apache.commons.lang3.StringUtils.isNotEmpty(gps.getUser().getName())){
 			dc.add(Restrictions.like("user.name", "%"+gps.getUser().getName()+"%"));
 		}
 		dc.add(Restrictions.eq(Gps.FIELD_DEL_FLAG, Gps.DEL_FLAG_NORMAL));
-		dc.addOrder(Order.desc("id"));
+		dc.addOrder(Order.desc("createDate"));
 		return gpsDao.find(page, dc);
 	}
 	
@@ -57,6 +58,11 @@ public class GpsService extends BaseService {
 	}
 
 	public List<Gps> findAll(String uid) {
-		return gpsDao.find("from Gps where user.id=:p1 and del_flag =0",new Parameter(uid));
+        Gps gps = new Gps();
+        Euser user = new Euser();
+        user.setId(uid);
+        gps.setUser(user);
+        return find(new Page<Gps>(1, 50), gps).getList();
+//		return gpsDao.find("from Gps where user.id=:p1 and del_flag =0 ",new Parameter(uid));
 	}
 }

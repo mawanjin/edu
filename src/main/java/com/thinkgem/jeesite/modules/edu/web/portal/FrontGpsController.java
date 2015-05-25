@@ -25,6 +25,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.List;
 
 /**
@@ -47,37 +49,49 @@ public class FrontGpsController extends BaseController {
 
 	@ResponseBody
 	@RequestMapping(value = {"locate"})
-	public String locate(String uid){
-		BufferedReader bufferedReader=null;
-		HttpClient httpClient = HttpClients.createDefault();
-		HttpGet request = new HttpGet("http://api.map.baidu.com/location/ip?ak=GZ5zloRNsGhe3Kh7NWAwisgn");
-		try {
-
-			HttpResponse response = httpClient.execute(request);
-			StringBuilder entityStringBuilder=new StringBuilder();
-			bufferedReader=new BufferedReader
-					(new InputStreamReader(response.getEntity().getContent(), "UTF-8"), 8*1024);
-			String line=null;
-			while ((line=bufferedReader.readLine())!=null) {
-				entityStringBuilder.append(line+"/n");
-			}
-
-			BaiduGpsDto baiduGpsDto =JsonMapper.getInstance().fromJson(entityStringBuilder.toString(), BaiduGpsDto.class);
-
-			//保存到数据库
-			if(baiduGpsDto!=null||baiduGpsDto.getContent()!=null&& StringUtils.isNotEmpty(baiduGpsDto.getContent().getAddress())){
-				Gps gps = new Gps();
-				Euser user = new Euser();
-				user.setId(uid);
-				gps.setUser(user);
-				gps.setLocation(baiduGpsDto.getContent().getAddress());
-				gpsService.save(gps);
-			}
-
-			return baiduGpsDto.getContent().getAddress();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return "";
+	public String locate(String uid,String address){
+        Gps gps = new Gps();
+        Euser user = new Euser();
+        user.setId(uid);
+        gps.setUser(user);
+        gps.setLocation(address);
+        gpsService.save(gps);
+        return address;
 	}
+
+//    @ResponseBody
+//	@RequestMapping(value = {"locate"})
+//	public String locate(String uid){
+//		BufferedReader bufferedReader=null;
+//		HttpClient httpClient = HttpClients.createDefault();
+//		HttpGet request = new HttpGet("http://api.map.baidu.com/location/ip?ak=GZ5zloRNsGhe3Kh7NWAwisgn");
+//		try {
+//
+//			HttpResponse response = httpClient.execute(request);
+//			StringBuilder entityStringBuilder=new StringBuilder();
+//			bufferedReader=new BufferedReader
+//					(new InputStreamReader(response.getEntity().getContent(), "UTF-8"), 8*1024);
+//			String line=null;
+//			while ((line=bufferedReader.readLine())!=null) {
+//				entityStringBuilder.append(line+"/n");
+//			}
+//
+//			BaiduGpsDto baiduGpsDto =JsonMapper.getInstance().fromJson(entityStringBuilder.toString(), BaiduGpsDto.class);
+//
+//			//保存到数据库
+//			if(baiduGpsDto!=null||baiduGpsDto.getContent()!=null&& StringUtils.isNotEmpty(baiduGpsDto.getContent().getAddress())){
+//				Gps gps = new Gps();
+//				Euser user = new Euser();
+//				user.setId(uid);
+//				gps.setUser(user);
+//				gps.setLocation(baiduGpsDto.getContent().getAddress());
+//				gpsService.save(gps);
+//			}
+//
+//			return baiduGpsDto.getContent().getAddress();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		return "";
+//	}
 }
