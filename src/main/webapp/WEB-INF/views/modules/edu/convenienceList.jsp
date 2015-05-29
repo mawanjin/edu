@@ -29,14 +29,14 @@
 	</form:form>
 	<tags:message content="${message}"/>
 	<table id="contentTable" class="table table-striped table-bordered table-condensed">
-		<thead><tr><th>缩略图</th><th>标题</th><th>简介</th><th>状态</th><th>备注</th><shiro:hasPermission name="edu:activity:edit"><th>操作</th></shiro:hasPermission></tr></thead>
+		<thead><tr><th>缩略图</th><th>标题</th><th>简介</th><th>状态</th><th>备注</th><shiro:hasPermission name="edu:convenience:edit"><th>操作</th></shiro:hasPermission></tr></thead>
 		<tbody>
 		<c:forEach items="${page.list}" var="convenience">
 			<tr>
-				<td><c:if test="${not empty activity.img}">
+				<td><c:if test="${not empty convenience.img}">
 					<img src="${ctxImg}/${convenience.img}" width="30px" height="30px"/> </c:if></td>
 				<td><a href="${ctx}/edu/convenience/form?id=${convenience.id}">${convenience.title}</a></td>
-				<td>${activity.summary}</td>
+				<td>${convenience.summary}</td>
 
 				<td>
 					<c:choose>

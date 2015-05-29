@@ -64,7 +64,7 @@ public class FrontSchoolNewsController extends BaseController {
 				try {
 					PropertyUtils.copyProperties(schoolNewsDto,schoolNews);
                     if(StringUtils.isNotEmpty(schoolNewsDto.getContent())){
-                        String domain = "http://"+request.getServerName();
+                        String domain = "http://"+request.getServerName()+":"+request.getServerPort();
                         schoolNewsDto.setContent(schoolNewsDto.getContent().replaceAll("\\/userfiles",domain+"\\/userfiles"));
                     }
 					rs.add(schoolNewsDto);

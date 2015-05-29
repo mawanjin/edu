@@ -71,7 +71,7 @@ public class FrontSchoolController extends BaseController {
 				try {
 					PropertyUtils.copyProperties(schoolDto,school1);
 					if(StringUtils.isNotEmpty(schoolDto.getContent())){
-						String domain = "http://"+request.getServerName();
+                        String domain = "http://"+request.getServerName()+":"+request.getServerPort();
 						schoolDto.setContent(schoolDto.getContent().replaceAll("\\/userfiles",domain+"\\/userfiles"));
 					}
 					rs.add(schoolDto);

@@ -71,7 +71,7 @@ public class FrontAbroadController extends BaseController {
 					PropertyUtils.copyProperties(abroadDto,abroadhome);
 
 					if(StringUtils.isNotEmpty(abroadDto.getContent())){
-						String domain = "http://"+request.getServerName();
+                        String domain = "http://"+request.getServerName()+":"+request.getServerPort();
 						abroadDto.setContent(abroadDto.getContent().replaceAll("\\/userfiles",domain+"\\/userfiles"));
 					}
 
