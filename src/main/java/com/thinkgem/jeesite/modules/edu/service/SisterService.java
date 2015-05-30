@@ -55,6 +55,6 @@ public class SisterService extends BaseService {
 	}
 
 	public List<Sister> findAll() {
-		return sisterDao.find("from Sister where status=1 and del_flag=0 ");
+		return sisterDao.find("from Sister where status=1 and del_flag=0 order by createDate desc");
 	}
 }

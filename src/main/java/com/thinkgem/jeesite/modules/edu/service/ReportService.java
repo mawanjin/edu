@@ -60,6 +60,6 @@ public class ReportService extends BaseService {
 	}
 
 	public List<Report> findByType(Byte type) {
-		return reportDao.find("from Report where type=:p1 and status=1 and del_flag=0",new Parameter(type));
+		return reportDao.find("from Report where type=:p1 and status=1 and del_flag=0 order by createDate desc",new Parameter(type));
 	}
 }

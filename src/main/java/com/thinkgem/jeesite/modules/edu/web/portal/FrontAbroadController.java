@@ -59,17 +59,23 @@ public class FrontAbroadController extends BaseController {
 
 	@RequestMapping(value = {"list", ""})
 	@ResponseBody
-	public List<AbroadDto> list(HttpServletRequest request, HttpServletResponse response, Model model) {
+	public List<AbroadDto> list(@RequestParam(required=false) String uid,HttpServletRequest request, HttpServletResponse response, Model model) {
+
+		//找到所有已报名的记录
+
+
 		List<Abroadhome> abroadhomes = abroadhomeService.findAll();
 		List<AbroadDto> rs = new ArrayList<AbroadDto>(0);
 
 		if(abroadhomes!=null&&abroadhomes.size()>0){
 
 			for(Abroadhome abroadhome :abroadhomes){
+
 				AbroadDto abroadDto = new AbroadDto();
 				try {
 					PropertyUtils.copyProperties(abroadDto,abroadhome);
-
+					if(StringUtils.isNotEmpty(uid))
+						abroadDto.setEnrolled(abroadEnrollService.isEnrolled(uid, abroadhome.getId()));
 					if(StringUtils.isNotEmpty(abroadDto.getContent())){
                         String domain = "http://"+request.getServerName()+":"+request.getServerPort();
 						abroadDto.setContent(abroadDto.getContent().replaceAll("\\/userfiles",domain+"\\/userfiles"));

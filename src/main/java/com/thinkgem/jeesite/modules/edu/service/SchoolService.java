@@ -64,6 +64,6 @@ public class SchoolService extends BaseService {
 	}
 
 	public List<School> findAllSchool(){
-		return schoolDao.find("from School where status=1 and del_flag=0");
+		return schoolDao.find("from School where status=1 and del_flag=0 order by createDate desc");
 	}
 }

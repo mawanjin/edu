@@ -64,6 +64,6 @@ public class ActivityService extends BaseService {
 	}
 
 	public List<Activity> findAll(){
-		return activityDao.find("from Activity where status=1 and del_flag=0 order by top desc");
+		return activityDao.find("from Activity where status=1 and del_flag=0 order by createDate desc");
 	}
 }

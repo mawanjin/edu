@@ -55,6 +55,6 @@ public class CustomizationService extends BaseService {
 	}
 
 	public List<Customization> findAll() {
-		return customizationDao.find("from Customization where status=1 and del_flag=0");
+		return customizationDao.find("from Customization where status=1 and del_flag=0 order by createDate desc");
 	}
 }

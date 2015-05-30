@@ -56,6 +56,6 @@ public class AbroadhomeService extends BaseService {
 	}
 
 	public List<Abroadhome> findAll() {
-		return abroadhomeDao.find("from Abroadhome where status=1 and del_flag=0 ");
+		return abroadhomeDao.find("from Abroadhome where status=1 and del_flag=0 order by createDate desc");
 	}
 }
