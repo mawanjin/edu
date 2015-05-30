@@ -40,7 +40,7 @@ public class CustomizationService extends BaseService {
 			dc.add(Restrictions.like("name", "%"+customization.getName()+"%"));
 		}
 		dc.add(Restrictions.eq(Customization.FIELD_DEL_FLAG, Customization.DEL_FLAG_NORMAL));
-		dc.addOrder(Order.desc("id"));
+		dc.addOrder(Order.desc("createDate"));
 		return customizationDao.find(page, dc);
 	}
 	

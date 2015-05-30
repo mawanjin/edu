@@ -45,7 +45,7 @@ public class ReportService extends BaseService {
 			dc.add(Restrictions.eq("type", report.getType()));
 		}
 		dc.add(Restrictions.eq(Report.FIELD_DEL_FLAG, Report.DEL_FLAG_NORMAL));
-		dc.addOrder(Order.desc("id"));
+		dc.addOrder(Order.desc("createDate"));
 		return reportDao.find(page, dc);
 	}
 	

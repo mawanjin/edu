@@ -41,7 +41,7 @@ public class ActivityService extends BaseService {
 			dc.add(Restrictions.like("title", "%"+activity.getTitle()+"%"));
 		}
 		dc.add(Restrictions.eq(Activity.FIELD_DEL_FLAG, Activity.DEL_FLAG_NORMAL));
-		dc.addOrder(Order.desc("id"));
+		dc.addOrder(Order.desc("createDate"));
 		return activityDao.find(page, dc);
 	}
 	

@@ -40,7 +40,7 @@ public class TeacherService extends BaseService {
 			dc.add(Restrictions.like("name", "%"+teacher.getName()+"%"));
 		}
 		dc.add(Restrictions.eq(Teacher.FIELD_DEL_FLAG, Teacher.DEL_FLAG_NORMAL));
-		dc.addOrder(Order.desc("id"));
+		dc.addOrder(Order.desc("createDate"));
 		return teacherDao.find(page, dc);
 	}
 	

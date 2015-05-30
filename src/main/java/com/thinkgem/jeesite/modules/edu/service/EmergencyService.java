@@ -42,7 +42,7 @@ public class EmergencyService extends BaseService {
 			dc.add(Restrictions.like("title", "%"+emergency.getTitle()+"%"));
 		}
 		dc.add(Restrictions.eq(Emergency.FIELD_DEL_FLAG, Emergency.DEL_FLAG_NORMAL));
-		dc.addOrder(Order.desc("id"));
+		dc.addOrder(Order.desc("createDate"));
 		return emergencyDao.find(page, dc);
 	}
 	

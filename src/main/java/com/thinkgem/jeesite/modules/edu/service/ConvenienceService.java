@@ -40,7 +40,7 @@ public class ConvenienceService extends BaseService {
 			dc.add(Restrictions.like("title", "%"+convenience.getTitle()+"%"));
 		}
 		dc.add(Restrictions.eq(Convenience.FIELD_DEL_FLAG, Convenience.DEL_FLAG_NORMAL));
-		dc.addOrder(Order.desc("id"));
+		dc.addOrder(Order.desc("createDate"));
 		return convenienceDao.find(page, dc);
 	}
 	

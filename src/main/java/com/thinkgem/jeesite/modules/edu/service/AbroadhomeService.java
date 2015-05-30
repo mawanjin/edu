@@ -41,7 +41,7 @@ public class AbroadhomeService extends BaseService {
 			dc.add(Restrictions.like("name", "%"+abroadhome.getTitle()+"%"));
 		}
 		dc.add(Restrictions.eq(Abroadhome.FIELD_DEL_FLAG, Abroadhome.DEL_FLAG_NORMAL));
-		dc.addOrder(Order.desc("id"));
+		dc.addOrder(Order.desc("createDate"));
 		return abroadhomeDao.find(page, dc);
 	}
 	
