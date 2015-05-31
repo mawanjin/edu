@@ -124,29 +124,29 @@
             </div>
         </div>
 
-		<div class="control-group">
-			<label class="control-label" for="teachTime">教学时间:</label>
-			<div class="controls">
-				<form:input path="teachTime" htmlEscape="false" maxlength="200"  class="required"/>
-			</div>
-		</div>
+		<%--<div class="control-group">--%>
+			<%--<label class="control-label" for="teachTime">教学时间:</label>--%>
+			<%--<div class="controls">--%>
+				<%--<form:input path="teachTime" htmlEscape="false" maxlength="200"  class="required"/>--%>
+			<%--</div>--%>
+		<%--</div>--%>
+
+		<%--<div class="control-group">--%>
+			<%--<label class="control-label" for="grade">职称:</label>--%>
+			<%--<div class="controls">--%>
+				<%--<form:input path="grade" htmlEscape="false" maxlength="200"  class="required"/>--%>
+			<%--</div>--%>
+		<%--</div>--%>
+
+		<%--<div class="control-group">--%>
+			<%--<label class="control-label" for="ability">教学领域:</label>--%>
+			<%--<div class="controls">--%>
+				<%--<form:input path="ability" htmlEscape="false" maxlength="200"  class="required"/>--%>
+			<%--</div>--%>
+		<%--</div>--%>
 
 		<div class="control-group">
-			<label class="control-label" for="grade">职称:</label>
-			<div class="controls">
-				<form:input path="grade" htmlEscape="false" maxlength="200"  class="required"/>
-			</div>
-		</div>
-
-		<div class="control-group">
-			<label class="control-label" for="ability">教学领域:</label>
-			<div class="controls">
-				<form:input path="ability" htmlEscape="false" maxlength="200"  class="required"/>
-			</div>
-		</div>
-
-		<div class="control-group">
-			<label class="control-label" for="ability">专业:</label>
+			<label class="control-label" for="major">专业:</label>
 			<div class="controls">
 				<select name="major.id">
 				<c:forEach items="${majors}" var="major">
@@ -175,12 +175,12 @@
             </div>
         </div>
 
-		<div class="control-group">
-			<label class="control-label" for="remarks">备注:</label>
-			<div class="controls">
-				<form:textarea path="remarks" htmlEscape="false" rows="4" maxlength="200" class="input-xxlarge"/>
-			</div>
-		</div>
+		<%--<div class="control-group">--%>
+			<%--<label class="control-label" for="remarks">备注:</label>--%>
+			<%--<div class="controls">--%>
+				<%--<form:textarea path="remarks" htmlEscape="false" rows="4" maxlength="200" class="input-xxlarge"/>--%>
+			<%--</div>--%>
+		<%--</div>--%>
 
 		<div class="control-group">
 			<label class="control-label" for="content">详情:</label>

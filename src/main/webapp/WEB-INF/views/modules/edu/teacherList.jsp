@@ -48,7 +48,7 @@
 						</c:otherwise>
 					</c:choose>
 				</td>
-				<td>${teacher.major.name}</td> 
+				<td>${teacher.major.name}</td>
 
                 <td>
                     <c:choose>

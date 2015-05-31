@@ -86,7 +86,7 @@
 		<tags:message content="${message}"/>
 
 
-		<div class="control-group">
+		<div class="control-group" style="display: none;" >
 			<label class="control-label" for="img">缩略图:</label>
 			<div class="controls">
 
@@ -198,14 +198,6 @@
                 <form:radiobutton path="status" value="1" />已发布
             </div>
         </div>
-
-
-		<div class="control-group">
-			<label class="control-label" for="remarks">备注:</label>
-			<div class="controls">
-				<form:textarea path="remarks" htmlEscape="false" rows="4" maxlength="200" class="input-xxlarge"/>
-			</div>
-		</div>
 
 		<div class="control-group">
 			<label class="control-label" for="content">详情:</label>

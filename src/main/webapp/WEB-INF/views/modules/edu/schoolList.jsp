@@ -29,16 +29,10 @@
 	</form:form>
 	<tags:message content="${message}"/>
 	<table id="contentTable" class="table table-striped table-bordered table-condensed">
-		<thead><tr><th>缩略图</th><th>校徽</th><th>名称</th><th>简介</th><th>国家</th><th>类型</th><th>状态</th><th>备注</th><shiro:hasPermission name="edu:school:edit"><th>操作</th></shiro:hasPermission></tr></thead>
+		<thead><tr><th>校徽</th><th>名称</th><th>简介</th><th>国家</th><th>类型</th><th>状态</th><shiro:hasPermission name="edu:school:edit"><th>操作</th></shiro:hasPermission></tr></thead>
 		<tbody>
 		<c:forEach items="${page.list}" var="school">
 			<tr>
-				<td>
-					<c:if test="${not empty school.img}">
-						<img src="${ctxImg}/${school.img}" width="30px" height="30px"/>
-					</c:if>
-				</td>
-
 				<td>
 					<c:if test="${not empty school.badge}">
 						<img src="${ctxImg}/${school.badge}" width="30px" height="30px"/>
@@ -61,7 +55,6 @@
                         </c:otherwise>
                     </c:choose>
                 </td>
-				<td>${school.remarks}</td>
 				<shiro:hasPermission name="edu:school:edit"><td>
                     <c:choose>
                         <c:when test="${school.status==0}" >

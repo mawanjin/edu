@@ -6,7 +6,7 @@
 	<meta name="decorator" content="default"/>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			
+
 		});
 		function page(n,s){
 			$("#pageNo").val(n);
@@ -39,10 +39,13 @@
                 <td>
 						${question.msg}
                 </td>
-				<td>${fn:substring(question.reply, 0, 16) }</td>
-				<shiro:hasPermission name="edu:question:edit"><td>
-    				<a href="${ctx}/edu/question/form?id=${question.id}">修改</a>
-					<a href="${ctx}/edu/question/delete?id=${question.id}" onclick="return confirmx('确认要删除该咨询回复吗？', this.href)">删除</a>
+				<td>
+                    <a href="${ctx}/edu/question/form?id=${question.id}">查看</a>
+				</td>
+				<shiro:hasPermission name="edu:question:edit">
+					<td>
+						<a href="${ctx}/edu/question/form?id=${question.id}">修改</a>
+						<a href="${ctx}/edu/question/delete?id=${question.id}" onclick="return confirmx('确认要删除该咨询回复吗？', this.href)">删除</a>
 				</td></shiro:hasPermission>
 			</tr>
 		</c:forEach>

@@ -81,6 +81,7 @@ public class InquiryReplyController extends BaseController {
 		if (!beanValidator(model, inquiryReply)){
 			return form(inquiryReply, type, model);
 		}
+
 		inquiryReplyService.save(inquiryReply);
 		addMessage(redirectAttributes, "保存留言回复成功");
 		return "redirect:"+Global.getAdminPath()+"/edu/inquiryReply/?repage&type="+type+"&inquiry.id="+inquiryReply.getInquiry().getId();
