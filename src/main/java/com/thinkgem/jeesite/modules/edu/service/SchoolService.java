@@ -36,7 +36,7 @@ public class SchoolService extends BaseService {
 	}
 
 	public List<School> findByCountry(String id){
-		return schoolDao.find("from School where country.id=:p1 and status=1 and del_flag=0",new Parameter(id));
+		return schoolDao.find("from School where country.id=:p1 and status=1 and del_flag=0 order by createDate desc ",new Parameter(id));
 	}
 	
 	public Page<School> find(Page<School> page, School school) {
@@ -45,7 +45,8 @@ public class SchoolService extends BaseService {
 			dc.add(Restrictions.like("name", "%"+school.getName()+"%"));
 		}
 		dc.add(Restrictions.eq(School.FIELD_DEL_FLAG, School.DEL_FLAG_NORMAL));
-		dc.addOrder(Order.desc("id"));
+		dc.addOrder(Order.desc("createDate"));
+
 		return schoolDao.find(page, dc);
 	}
 	
