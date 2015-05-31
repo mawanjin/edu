@@ -29,7 +29,7 @@
 	</form:form>
 	<tags:message content="${message}"/>
 	<table id="contentTable" class="table table-striped table-bordered table-condensed">
-		<thead><tr><th>缩略图</th><th>名称</th><th>性别</th><th>专业</th><th>教学时间</th><th>职称</th><th>教学领域</th><th>状态</th><th>备注</th><shiro:hasPermission name="edu:teacher:edit"><th>操作</th></shiro:hasPermission></tr></thead>
+		<thead><tr><th>缩略图</th><th>名称</th><th>性别</th><th>专业</th><th>状态</th><shiro:hasPermission name="edu:teacher:edit"><th>操作</th></shiro:hasPermission></tr></thead>
 		<tbody>
 		<c:forEach items="${page.list}" var="teacher">
 			<tr>
@@ -48,10 +48,8 @@
 						</c:otherwise>
 					</c:choose>
 				</td>
-				<td>${teacher.major.name}</td>
-				<td>${teacher.teachTime}</td>
-				<td>${teacher.grade}</td>
-				<td>${teacher.ability}</td>
+				<td>${teacher.major.name}</td> 
+
                 <td>
                     <c:choose>
                         <c:when test="${teacher.status==1}">已发布</c:when>
@@ -60,7 +58,7 @@
                         </c:otherwise>
                     </c:choose>
                 </td>
-				<td>${teacher.remarks}</td>
+
 				<shiro:hasPermission name="edu:teacher:edit"><td>
                     <c:choose>
                         <c:when test="${teacher.status==0}" >
