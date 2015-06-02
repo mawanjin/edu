@@ -44,7 +44,8 @@ public class FrontGpsController extends BaseController {
 	@ResponseBody
 	@RequestMapping(value = {""})
 	public List<Gps> list(String uid) {
-		return gpsService.findAll(uid);
+		List<Gps> gps = gpsService.findAll(uid);
+		return gps;
 	}
 
 	@ResponseBody

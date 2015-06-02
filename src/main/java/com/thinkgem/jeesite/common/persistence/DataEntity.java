@@ -47,6 +47,7 @@ public abstract class DataEntity<T> extends BaseEntity<T> implements Serializabl
 	protected String remarks;	// 备注
 	protected User createBy;	// 创建者
 
+
 	protected Date createDate;// 创建日期
 	protected User updateBy;	// 更新者
 	protected Date updateDate;// 更新日期
@@ -103,7 +104,7 @@ public abstract class DataEntity<T> extends BaseEntity<T> implements Serializabl
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
 	public Date getCreateDate() {
 		return createDate;
 	}
@@ -123,7 +124,7 @@ public abstract class DataEntity<T> extends BaseEntity<T> implements Serializabl
 		this.updateBy = updateBy;
 	}
 
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
 	@Field(index=Index.YES, analyze=Analyze.NO, store=Store.YES)
 	@DateBridge(resolution = Resolution.DAY)
 	public Date getUpdateDate() {
