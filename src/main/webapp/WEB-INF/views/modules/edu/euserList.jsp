@@ -30,7 +30,8 @@
 	</form:form>
 	<tags:message content="${message}"/>
 	<table id="contentTable" class="table table-striped table-bordered table-condensed">
-		<thead><tr><th>名称</th><th>类型</th><th>昵称</th><th>登录名</th><th>所属学校</th><th>出生年月</th><th>教学时间</th><th>教学领域</th><th>详情</th><shiro:hasPermission name="edu:euser:edit"><th>操作</th></shiro:hasPermission></tr></thead>
+		<%--<thead><tr><th>名称</th><th>类型</th><th>昵称</th><th>登录名</th><th>所属学校</th><th>出生年月</th><th>教学时间</th><th>教学领域</th><th>详情</th><shiro:hasPermission name="edu:euser:edit"><th>操作</th></shiro:hasPermission></tr></thead>--%>
+		<thead><tr><th>名称</th><th>类型</th><th>昵称</th><th>登录名</th><th>所属学校</th><th>出生年月</th><th>详情</th><shiro:hasPermission name="edu:euser:edit"><th>操作</th></shiro:hasPermission></tr></thead>
 		<tbody>
 		<c:forEach items="${page.list}" var="euser">
 			<tr>
@@ -49,8 +50,8 @@
 				<td>${euser.loginName}</td>
 				<td>${euser.school.name}</td>
 				<td><fmt:formatDate pattern="yyyy-MM-dd" value="${euser.birth}" type="both"/></td>
-				<td>${euser.teachTime}</td>
-				<td>${euser.ability}</td>
+				<%--<td>${euser.teachTime}</td>--%>
+				<%--<td>${euser.ability}</td>--%>
 				<td>${euser.remarks}</td>
 				<shiro:hasPermission name="edu:euser:edit"><td>
 					<c:if test="${euser.type==1 or euser.type==3}"><a href="${ctx}/edu/userRelation/?eduUserByParentId.id=${euser.id}">查看学生</a></c:if>
