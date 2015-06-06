@@ -81,4 +81,16 @@ public class UserRelationService extends BaseService {
 		if(guardian==null||guardian.size()==0)return null;
 		return guardian.get(0).getEduUserByParentId();
 	}
+
+	/**
+	 * 找到孩子
+	 * @return
+	 */
+	public Euser findChild(String uid) {
+		List<UserRelation> child = userRelationDao.find("from UserRelation where eduUserByParentId.id=:p1 and delFlag='0' and eduUserByParentId.type=1  ",new Parameter(uid));
+		if(child!=null&&child.size()>0){
+			return child.get(0).getEduUserById();
+		}
+		return null;
+	}
 }
