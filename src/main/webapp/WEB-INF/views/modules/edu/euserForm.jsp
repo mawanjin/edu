@@ -68,14 +68,14 @@
 		</div>
 
 
-		<div id="passField" class="control-group" <c:if test="${not empty euser.name}">style="display: none"</c:if> >
+		<div id="passField" class="control-group" <c:if test="${not empty euser.password}">style="display: none"</c:if> >
 			<label class="control-label" for="password">密码:</label>
 			<div class="controls">
 				<form:password path="password" class="required" minlength="5"  />
 			</div>
 		</div>
 
-		<div id="passConfirmField" class="control-group" <c:if test="${not empty euser.name}">style="display: none"</c:if>>
+		<div id="passConfirmField" class="control-group" <c:if test="${not empty euser.password}">style="display: none"</c:if>>
 			<label class="control-label" for="confirmPass">再次输入密码:</label>
 			<div class="controls">
 				<input id="confirmPass" type="password" equalTo="#password" />
