@@ -46,6 +46,16 @@ public class FrontLoginController extends BaseController {
                 loginDto.setSchoolId(euser.getSchool().getId());
                 loginDto.setSchoolName(euser.getSchool().getName());
             }
+
+            if(euser.getType()==1){//如果是家长,找到孩子,并将孩子所在的学校信息放进来
+                Euser child = userRelationService.findChild(euser.getId());
+
+                if (child != null) {
+                    loginDto.setSchoolId(child.getSchool().getId());
+                    loginDto.setSchoolName(child.getSchool().getName());
+                }
+            }
+
             loginDto.setRs(true);
         }
 
