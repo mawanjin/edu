@@ -65,7 +65,8 @@ public class EuserService extends BaseService {
 	}
 
 	public List<Euser> findAll() {
-		return euserDao.findAll();
+        return euserDao.find("from Euser where delFlag = 0");
+//		return euserDao.findAll();
 	}
 
 	public Euser login(String loginName, String password) {
