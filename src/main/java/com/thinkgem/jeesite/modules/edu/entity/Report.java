@@ -20,6 +20,7 @@ public class Report extends IdEntity<Report> {
     private String content;
     private Byte status;
     private Byte type;//0 周报告 1 月报告 2 学期报告 3 年报告
+    private Euser euser;//指定给谁
 
     @Basic
     @Column(name = "title")
@@ -59,5 +60,15 @@ public class Report extends IdEntity<Report> {
 
     public void setType(Byte type) {
         this.type = type;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "user")
+    public Euser getEuser() {
+        return euser;
+    }
+
+    public void setEuser(Euser euser) {
+        this.euser = euser;
     }
 }
