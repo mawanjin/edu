@@ -40,6 +40,17 @@
 		</div>
 
         <div class="control-group">
+            <label class="control-label" for="euser.id">用户:</label>
+            <div class="controls">
+                <select name="euser.id">
+                    <c:forEach items="${users}" var="user">
+                        <option value="${user.id}" <c:if test="${user.id eq report.euser.id}" >selected="selected" </c:if>>${user.name}</option>
+                    </c:forEach>
+                </select>
+            </div>
+        </div>
+
+        <div class="control-group">
             <label class="control-label" for="status">状态:</label>
             <div class="controls">
                 <form:radiobutton path="status" value="0" checked="checked"   />未发布
