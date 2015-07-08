@@ -6,6 +6,8 @@ package com.thinkgem.jeesite.modules.edu.web;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.thinkgem.jeesite.modules.edu.entity.Euser;
+import com.thinkgem.jeesite.modules.edu.service.EuserService;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,8 @@ import com.thinkgem.jeesite.modules.sys.utils.UserUtils;
 import com.thinkgem.jeesite.modules.edu.entity.Report;
 import com.thinkgem.jeesite.modules.edu.service.ReportService;
 
+import java.util.List;
+
 /**
  * 日常报告Controller
  * @author lala
@@ -36,6 +40,9 @@ public class ReportController extends BaseController {
 
 	@Autowired
 	private ReportService reportService;
+
+    @Autowired
+    private EuserService euserService;
 	
 	@ModelAttribute
 	public Report get(@RequestParam(required=false) String id) {
@@ -61,6 +68,8 @@ public class ReportController extends BaseController {
 	@RequiresPermissions("edu:report:view")
 	@RequestMapping(value = "form")
 	public String form(Report report, Model model) {
+        List<Euser> users = euserService.findAll();
+		model.addAttribute("users", users);
 		model.addAttribute("report", report);
 		return "modules/" + "edu/reportForm";
 	}
