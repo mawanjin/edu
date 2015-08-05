@@ -51,6 +51,7 @@ public class ReportService extends BaseService {
 	
 	@Transactional(readOnly = false)
 	public void save(Report report) {
+        reportDao.clear();
 		reportDao.save(report);
 	}
 	
@@ -59,7 +60,7 @@ public class ReportService extends BaseService {
 		reportDao.deleteById(id);
 	}
 
-	public List<Report> findByType(Byte type) {
-		return reportDao.find("from Report where type=:p1 and status=1 and del_flag=0 order by createDate desc",new Parameter(type));
+	public List<Report> findByType(Byte type,String uid) {
+		return reportDao.find("from Report where type=:p1 and status=1 and del_flag=0 and euser.id=:p2 order by createDate desc",new Parameter(type,uid));
 	}
 }

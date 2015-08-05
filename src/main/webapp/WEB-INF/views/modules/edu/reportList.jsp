@@ -32,7 +32,7 @@
 	</form:form>
 	<tags:message content="${message}"/>
 	<table id="contentTable" class="table table-striped table-bordered table-condensed">
-		<thead><tr><th>标题</th><th>类型</th><th>状态</th><th>内容</th><shiro:hasPermission name="edu:report:edit"><th>操作</th></shiro:hasPermission></tr></thead>
+		<thead><tr><th>标题</th><th>类型</th><th>接受方</th><th>状态</th><th>内容</th><shiro:hasPermission name="edu:report:edit"><th>操作</th></shiro:hasPermission></tr></thead>
 		<tbody>
 		<c:forEach items="${page.list}" var="report">
 			<tr>
@@ -45,6 +45,7 @@
 						<c:when test="${report.type eq 3}">年报告</c:when>
 					</c:choose>
 				</td>
+                <td>${report.euser.name}</td>
                 <td>
                     <c:choose>
                         <c:when test="${report.status==1}">已发布</c:when>

@@ -3,14 +3,10 @@
  */
 package com.thinkgem.jeesite.modules.edu.web.portal;
 
-import com.thinkgem.jeesite.common.utils.StringUtils;
 import com.thinkgem.jeesite.common.web.BaseController;
-import com.thinkgem.jeesite.modules.edu.entity.Activity;
 import com.thinkgem.jeesite.modules.edu.entity.Report;
-import com.thinkgem.jeesite.modules.edu.service.ActivityService;
+import com.thinkgem.jeesite.modules.edu.service.EuserService;
 import com.thinkgem.jeesite.modules.edu.service.ReportService;
-import com.thinkgem.jeesite.modules.edu.web.portal.dto.ActivityDto;
-import org.apache.commons.beanutils.PropertyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -44,8 +39,8 @@ public class FrontReportController extends BaseController {
 
 	@RequestMapping(value = {"list", ""})
 	@ResponseBody
-	public List<Report> list(int type, HttpServletRequest request, HttpServletResponse response, Model model) {
-		List<Report> reports = reportService.findByType((byte) type);
+	public List<Report> list(int type, String uid,HttpServletRequest request, HttpServletResponse response, Model model) {
+		List<Report> reports = reportService.findByType((byte) type,uid);
 		return reports;
 	}
 

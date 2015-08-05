@@ -111,19 +111,19 @@
             </div>
         </div>
 
-		<div class="control-group">
-			<label class="control-label" for="loginName">教学时间:</label>
-			<div class="controls">
-				<form:input path="teachTime" htmlEscape="false" maxlength="200" />
-			</div>
-		</div>
+		<%--<div class="control-group">--%>
+			<%--<label class="control-label" for="loginName">教学时间:</label>--%>
+			<%--<div class="controls">--%>
+				<%--<form:input path="teachTime" htmlEscape="false" maxlength="200" />--%>
+			<%--</div>--%>
+		<%--</div>--%>
 
-		<div class="control-group">
-			<label class="control-label" for="loginName">教学领域:</label>
-			<div class="controls">
-				<form:input path="ability" htmlEscape="false" maxlength="200" />
-			</div>
-		</div>
+		<%--<div class="control-group">--%>
+			<%--<label class="control-label" for="loginName">教学领域:</label>--%>
+			<%--<div class="controls">--%>
+				<%--<form:input path="ability" htmlEscape="false" maxlength="200" />--%>
+			<%--</div>--%>
+		<%--</div>--%>
 
 
 		<div class="control-group">

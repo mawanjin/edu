@@ -91,6 +91,7 @@
 							$("#uploadBtn").show();
 							$("#delPortraitBtn1").hide();
 							$("#portrait").attr("src","");
+                            $("#portrait").hide();
 
 							event.preventDefault();
 						});
