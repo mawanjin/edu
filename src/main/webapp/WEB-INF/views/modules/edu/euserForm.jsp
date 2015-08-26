@@ -60,7 +60,7 @@
 		<div class="control-group">
 			<label class="control-label" for="loginName"></label>
 			<div class="controls">
-				<c:if test="${not empty euser.name}">
+				<c:if test="${not empty euser}">
 					<a id="showModifyPassword" href="#">修改密码?</a>
 					<a id="cancelModifyPassword" href="#" style="display: none;">取消修改密码?</a>
 				</c:if>
