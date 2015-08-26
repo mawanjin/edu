@@ -68,7 +68,7 @@ public class ReportController extends BaseController {
 	@RequiresPermissions("edu:report:view")
 	@RequestMapping(value = "form")
 	public String form(Report report, Model model) {
-        List<Euser> users = euserService.findAll();
+        List<Euser> users = euserService.findAllHouseHolder();
 		model.addAttribute("users", users);
 		model.addAttribute("report", report);
 		return "modules/" + "edu/reportForm";
