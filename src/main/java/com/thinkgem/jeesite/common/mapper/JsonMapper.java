@@ -78,7 +78,7 @@ public class JsonMapper extends ObjectMapper {
 	 */
 	public static JsonMapper getInstance() {
 		if (mapper == null){
-			mapper = new JsonMapper().enableSimple();
+			mapper = new JsonMapper();
 		}
 		return mapper;
 	}

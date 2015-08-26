@@ -70,9 +70,21 @@ public class EuserService extends BaseService {
 	}
 
 	public Euser login(String loginName, String password) {
+        loginName = loginName.trim();
+        password = password.trim();
 		List<Euser> eusers = euserDao.find("from Euser where loginName=:p1 and password=:p2 and del_flag=0", new Parameter(new String[]{loginName, password}));
 		if(eusers!=null&&eusers.size()>0)return eusers.get(0);
-		return null;
+        //未找到,看是否用户存在
+        eusers = euserDao.find("from Euser where loginName=:p1 and del_flag=0", new Parameter(new String[]{loginName}));
+        if(eusers!=null&&eusers.size()>0){
+            Euser euser = new Euser();
+            euser.setLoginName("normal");
+            return euser;
+        }else{
+            Euser euser = new Euser();
+            euser.setLoginName("abnormal");
+            return euser;
+        }
 	}
 
 	public Euser findByLoginName(String loginName) {

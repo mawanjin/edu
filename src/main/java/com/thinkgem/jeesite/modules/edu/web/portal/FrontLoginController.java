@@ -37,26 +37,34 @@ public class FrontLoginController extends BaseController {
         Euser euser = euserService.login(loginName, password);
 
         if (euser != null) {
-            loginDto.setEuser(euser);
-            //监护人信息
-            Euser guardian = userRelationService.findGuardian(euser.getId());
-            loginDto.setGuardian(guardian);
+            if(euser.getLoginName().equals("normal")){
+                loginDto.setSchoolName("密码错误");
+                loginDto.setRs(false);
+            }else if(euser.getLoginName().equals("abnormal")){
+                loginDto.setSchoolName("用户不存在");
+                loginDto.setRs(false);
+            }else{
+                loginDto.setEuser(euser);
+                //监护人信息
+                Euser guardian = userRelationService.findGuardian(euser.getId());
+                loginDto.setGuardian(guardian);
 
-            if (euser.getSchool() != null) {
-                loginDto.setSchoolId(euser.getSchool().getId());
-                loginDto.setSchoolName(euser.getSchool().getName());
-            }
-
-            if(euser.getType()==1){//如果是家长,找到孩子,并将孩子所在的学校信息放进来
-                Euser child = userRelationService.findChild(euser.getId());
-
-                if (child != null) {
-                    loginDto.setSchoolId(child.getSchool().getId());
-                    loginDto.setSchoolName(child.getSchool().getName());
+                if (euser.getSchool() != null) {
+                    loginDto.setSchoolId(euser.getSchool().getId());
+                    loginDto.setSchoolName(euser.getSchool().getName());
                 }
-            }
 
-            loginDto.setRs(true);
+                if(euser.getType()==1){//如果是家长,找到孩子,并将孩子所在的学校信息放进来
+                    Euser child = userRelationService.findChild(euser.getId());
+
+                    if (child != null) {
+                        loginDto.setSchoolId(child.getSchool().getId());
+                        loginDto.setSchoolName(child.getSchool().getName());
+                    }
+                }
+
+                loginDto.setRs(true);
+            }
         }
 
         return loginDto;
