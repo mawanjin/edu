@@ -32,7 +32,7 @@
 	</form:form>
 	<tags:message content="${message}"/>
 	<table id="contentTable" class="table table-striped table-bordered table-condensed">
-		<thead><tr><th>标题</th><th>类型</th><th>接受方</th><th>状态</th><th>内容</th><shiro:hasPermission name="edu:report:edit"><th>操作</th></shiro:hasPermission></tr></thead>
+		<thead><tr><th>标题</th><th>类型</th><th>接受方</th><th>状态</th><shiro:hasPermission name="edu:report:edit"><th>操作</th></shiro:hasPermission></tr></thead>
 		<tbody>
 		<c:forEach items="${page.list}" var="report">
 			<tr>
@@ -54,7 +54,8 @@
                         </c:otherwise>
                     </c:choose>
                 </td>
-				<td>${fn:substring(report.content, 0, 15)}</td>
+				<%--<td>${fn:substring(report.content, 0, 16)}</td>--%>
+
 				<shiro:hasPermission name="edu:report:edit"><td>
                     <c:choose>
                         <c:when test="${report.status==0}" >
