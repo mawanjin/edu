@@ -7,7 +7,10 @@ import com.thinkgem.jeesite.common.mapper.JsonMapper;
 import com.thinkgem.jeesite.common.web.BaseController;
 import com.thinkgem.jeesite.modules.edu.entity.Euser;
 import com.thinkgem.jeesite.modules.edu.entity.Gps;
+import com.thinkgem.jeesite.modules.edu.entity.UserRelation;
+import com.thinkgem.jeesite.modules.edu.service.EuserService;
 import com.thinkgem.jeesite.modules.edu.service.GpsService;
+import com.thinkgem.jeesite.modules.edu.service.UserRelationService;
 import com.thinkgem.jeesite.modules.edu.web.portal.dto.BaiduGpsDto;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpResponse;
@@ -27,6 +30,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -40,11 +44,24 @@ public class FrontGpsController extends BaseController {
 
 	@Autowired
 	private GpsService gpsService;
+    @Autowired
+    private EuserService euserService;
+    @Autowired
+    private UserRelationService userRelationService;
 
 	@ResponseBody
 	@RequestMapping(value = {""})
 	public List<Gps> list(String uid) {
-		List<Gps> gps = gpsService.findAll(uid);
+        List<Gps> gps = new ArrayList<Gps>(0);
+        Euser euser = euserService.get(uid);
+        if(euser.getType()==1){//是家长，则找到他的孩子
+           Euser user = userRelationService.findChild(uid);
+            if(user!=null){
+                gps = gpsService.findAll(user.getId());
+            }
+        }else{
+            gps = gpsService.findAll(uid);
+        }
 		return gps;
 	}
 

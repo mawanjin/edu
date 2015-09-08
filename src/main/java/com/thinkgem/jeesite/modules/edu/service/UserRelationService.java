@@ -38,7 +38,6 @@ public class UserRelationService extends BaseService {
 	}
 	
 	public Page<UserRelation> find(Page<UserRelation> page, UserRelation userRelation) {
-		DetachedCriteria dc = userRelationDao.createDetachedCriteria();
 		if (userRelation.getEduUserById()!=null&&StringUtils.isNotEmpty(userRelation.getEduUserById().getName())){
 			return userRelationDao.find(page,"from UserRelation where delFlag='0' and eduUserById.name like '%"+userRelation.getEduUserById().getName()+"%'  order by id desc ");
 		}else if(userRelation.getEduUserByParentId()!=null){
