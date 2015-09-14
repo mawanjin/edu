@@ -52,6 +52,7 @@ public class SchoolService extends BaseService {
 	
 	@Transactional(readOnly = false)
 	public void save(School school) {
+        schoolDao.clear();
 		schoolDao.save(school);
 	}
 	
