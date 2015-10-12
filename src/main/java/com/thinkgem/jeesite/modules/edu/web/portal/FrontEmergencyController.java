@@ -62,6 +62,10 @@ public class FrontEmergencyController extends BaseController {
 				EmergencyDto emergencyDto = new EmergencyDto();
 				try {
 					PropertyUtils.copyProperties(emergencyDto,emergency);
+                    if(StringUtils.isNotEmpty(emergencyDto.getContent())){
+                        String domain = "http://"+request.getServerName()+":"+request.getServerPort();
+                        emergencyDto.setContent(emergencyDto.getContent().replaceAll("\\/userfiles",domain+"\\/userfiles"));
+                    }
 					rs.add(emergencyDto);
 				} catch (Exception e) {
 					e.printStackTrace();
